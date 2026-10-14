@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stackly Sports & Athletic Club | Elite Arenas, Coaching & Wellness</title>
+  <meta name="description" content="Welcome to Stackly Sports Club, Salem's premier international athletic arena. Experience Olympic-grade facilities, world-class coaching, and championship training.">
+  <meta name="keywords" content="sports club, athletic club Salem, badminton academy, tennis court, olympic swimming pool, fitness center">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Stackly Sports & Athletic Club">
+  <meta property="og:description" content="Salem's premier athletic complex with Olympic-grade courts, Olympian trainers, and elite wellness programs.">
+  <meta property="og:image" content="assets/images/hero-sports-club.webp">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon / Logo -->
+  <link rel="icon" type="image/webp" href="assets/images/logoStackly.webp">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. PAGE LOADER (Pure CSS, Brand Spinner, WCAG Compliant)
+       ========================================================================== -->
+  <div id="page-loader" role="status" aria-live="polite">
+    <div class="loader-content">
+      <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="loader-logo">
+      <div class="loader-spinner-wrapper">
+        <div class="loader-spinner"></div>
+      </div>
+      <span class="loader-text">Loading Excellence...</span>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       2. STICKY HEADER & NAVBAR
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="navbar-container">
+      <!-- Clickable Brand Logo Linking to index.html -->
+      <a href="index.html" class="brand-link" aria-label="Stackly Sports Club Homepage">
+        <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="brand-logo-img">
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link">About Us</a>
+          </li>
+          <!-- Multi-level Dropdown for Sports & Programs -->
+          <li class="nav-item has-dropdown">
+            <a href="sports-programs.html" class="nav-link dropdown-trigger" aria-haspopup="true">
+              Sports & Programs
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="sports-programs.html" class="dropdown-link">
+                  All Academies Overview
+                  <span class="subtext">Explore all 12 disciplines</span>
+                </a>
+              </li>
+              <li>
+                <a href="indoor-sports.html" class="dropdown-link">
+                  Indoor Sports Arena
+                  <span class="subtext">Badminton, Squash, Basketball & TT</span>
+                </a>
+              </li>
+              <li>
+                <a href="outdoor-athletics.html" class="dropdown-link">
+                  Outdoor Athletics
+                  <span class="subtext">FIFA Turf, 400m Track & Tennis</span>
+                </a>
+              </li>
+              <li>
+                <a href="fitness-training.html" class="dropdown-link">
+                  Fitness & Conditioning
+                  <span class="subtext">High-Tech Gym, CrossFit & Hydro</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="membership.html" class="nav-link">Membership</a>
+          </li>
+          <li class="nav-item">
+            <a href="contact.html" class="nav-link">Contact</a>
+          </li>
+
+          <!-- Mobile Only Actions inside drawer to avoid duplicates -->
+          <li class="mobile-drawer-actions">
+            <a href="sign-in.html" class="btn btn-secondary btn-block">Sign In</a>
+            <a href="sign-up.html" class="btn btn-primary btn-block">Register Membership</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Desktop Navigation Actions -->
+      <div class="nav-actions">
+        <a href="sign-in.html" class="btn btn-secondary btn-sm desktop-only-action">Sign In</a>
+        <a href="sign-up.html" class="btn btn-primary btn-sm desktop-only-action">Join Club</a>
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-nav-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       3. HERO SECTION
+       ========================================================================== -->
+  <section class="hero-section" aria-label="Hero Introduction">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content" data-aos="fade-right">
+          <div class="hero-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span>Salem's Premier Multi-Sport & Athletic Sanctuary</span>
+          </div>
+          <h1 class="hero-title">
+            Unleash Your <span class="highlight">Athletic Greatness</span> On World-Class Courts
+          </h1>
+          <p class="hero-subtitle">
+            Train where champions are forged. Stackly Sports Club combines international-grade synthetic arenas, certified Olympic trainers, and cutting-edge bio-mechanics recovery facilities under one iconic roof.
+          </p>
+          <div class="hero-actions">
+            <a href="404.html" class="btn btn-primary btn-lg">
+              Book Arena Tour
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="404.html" class="btn btn-outline-light btn-lg">
+              Explore Academies
+            </a>
+          </div>
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <h4>40+</h4>
+              <p>Championship Courts</p>
+            </div>
+            <div class="metric-item">
+              <h4>25+</h4>
+              <p>Olympian Coaches</p>
+            </div>
+            <div class="metric-item">
+              <h4>12k+</h4>
+              <p>Active Athletes</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" data-aos="fade-left">
+          <div class="hero-img-card">
+            <img src="assets/images/hero-sports-club.webp" alt="Athletes sprinting on high performance Olympic track at Stackly Sports Club">
+            <div class="hero-floating-card">
+              <div class="floating-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h5 style="color: #ffffff; font-size: 1rem; margin-bottom: 2px;">ISO 9001 Certified</h5>
+                <p style="color: #94a3b8; font-size: 0.8rem; margin: 0;">Olympic Standards Assured</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. HIGHLIGHTS & TRUST SECTION
+       ========================================================================== -->
+  <section class="py-section bg-surface" aria-label="Club Highlights">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Why Stackly Athletics</span>
+        <h2>Built For Performance, Crafted For Excellence</h2>
+        <p>From junior prodigies striving for national titles to corporate leaders seeking restorative fitness, our ecosystem provides the highest standard of athletic infrastructure in South India.</p>
+      </div>
+
+      <div class="card-grid-3">
+        <div class="sports-card" data-aos="fade-up">
+          <div class="sports-card-img">
+            <img src="assets/images/facility-badminton-court.webp" alt="Indoor wooden cushioned badminton arena at Stackly Sports Club">
+            <span class="sports-tag">BWF Approved</span>
+          </div>
+          <div class="sports-card-body">
+            <h3>Precision Court Engineering</h3>
+            <p>12 BWF-certified wooden cushioned courts with anti-glare vertical LED lighting and controlled humidity to minimize joint stress.</p>
+            <div class="feature-pills">
+              <span class="pill-item">10mm Cushioned Oak</span>
+              <span class="pill-item">1000 Lux Luminance</span>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">Learn More</a>
+          </div>
+        </div>
+
+        <div class="sports-card" data-aos="fade-up" style="animation-delay: 100ms;">
+          <div class="sports-card-img">
+            <img src="assets/images/facility-olympic-pool.webp" alt="Olympic 50-meter heated lap swimming pool at Stackly Sports Club">
+            <span class="sports-tag">FINA Compliant</span>
+          </div>
+          <div class="sports-card-body">
+            <h3>Olympic Aquatic Sanctuary</h3>
+            <p>50-meter 10-lane temperature-controlled swimming arena featuring continuous UV-ozone water purification and digital touch pads.</p>
+            <div class="feature-pills">
+              <span class="pill-item">27°C Temperature</span>
+              <span class="pill-item">Zero-Chlorine Scent</span>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">Learn More</a>
+          </div>
+        </div>
+
+        <div class="sports-card" data-aos="fade-up" style="animation-delay: 200ms;">
+          <div class="sports-card-img">
+            <img src="assets/images/facility-high-tech-gym.webp" alt="High performance biomechanics strength conditioning gym">
+            <span class="sports-tag">Bio-Mechanics Lab</span>
+          </div>
+          <div class="sports-card-body">
+            <h3>Strength & Conditioning Hub</h3>
+            <p>15,000 sq.ft of Eleiko Olympic lifting platforms, Keiser pneumatic machines, and AI-assisted force-plate movement analysis.</p>
+            <div class="feature-pills">
+              <span class="pill-item">Eleiko Certified</span>
+              <span class="pill-item">AI Force Analysis</span>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. ABOUT CLUB SECTION
+       ========================================================================== -->
+  <section class="py-section bg-subtle" aria-label="About the Club">
+    <div class="container">
+      <div class="hero-grid" style="grid-template-columns: 0.95fr 1.05fr;">
+        <div class="hero-visual" data-aos="fade-right">
+          <div class="sports-card" style="box-shadow: var(--shadow-xl);">
+            <img src="assets/images/sports-training-session.webp" alt="Head coach guiding sprint athletes during intensive morning training" style="height: 440px; object-fit: cover;">
+          </div>
+        </div>
+
+        <div class="hero-content" data-aos="fade-left">
+          <span class="section-tag accent">Our Heritage & Mission</span>
+          <h2 style="margin-bottom: 1.25rem;">Nurturing Sporting Ambition Since 2012</h2>
+          <p>Stackly Sports & Athletic Club was founded on a singular conviction: that world-class athletic facilities and scientific coaching methodologies should not be the exclusive privilege of national teams.</p>
+          <p>Situated in the heart of Salem at MMR Complex, our 22-acre sports sanctuary bridges grassroots talent identification with Olympic high-performance protocols.</p>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0;">
+            <div style="border-left: 3px solid #1d4ed8; padding-left: 1rem;">
+              <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">Scientific Coaching</h4>
+              <p style="font-size: 0.9rem; margin: 0;">Periodized regimens backed by sports physiologists and nutritionists.</p>
+            </div>
+            <div style="border-left: 3px solid #d97706; padding-left: 1rem;">
+              <h4 style="font-size: 1.1rem; margin-bottom: 0.35rem;">Holistic Recovery</h4>
+              <p style="font-size: 0.9rem; margin: 0;">Cryotherapy chambers, hot/cold hydro plunge pools, and deep tissue therapy.</p>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="about.html" class="btn btn-secondary">Read Full Story</a>
+            <a href="404.html" class="btn btn-outline">Download Club Dossier</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. SPORTS DISCIPLINES & ACADEMIES SECTION
+       ========================================================================== -->
+  <section class="py-section bg-surface" aria-label="Sports Disciplines">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Elite Disciplines</span>
+        <h2>Comprehensive Sports Programs For Every Age</h2>
+        <p>Curated curriculums spanning foundational junior leagues to international competitive squads.</p>
+      </div>
+
+      <div class="card-grid-3">
+        <!-- Card 1 -->
+        <div class="sports-card" data-aos="fade-up">
+          <div class="sports-card-img">
+            <img src="assets/images/facility-tennis-arena.webp" alt="Championship clay and hard tennis courts under stadium lights">
+            <span class="sports-tag">Tennis Academy</span>
+          </div>
+          <div class="sports-card-body">
+            <h3>Championship Tennis</h3>
+            <p>6 ITF-standard Plexicushion hard courts and 2 French red clay courts with Hawk-Eye video playback analysis.</p>
+            <a href="404.html" class="btn btn-outline btn-sm">Enroll In Tennis</a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="sports-card" data-aos="fade-up" style="animation-delay: 100ms;">
+          <div class="sports-card-img">
+            <img src="assets/images/facility-football-turf.webp" alt="FIFA quality pro all-weather football turf arena">
+            <span class="sports-tag">Football Academy</span>
+          </div>
+          <div class="sports-card-body">
+            <h3>FIFA Pro Football Turf</h3>
+            <p>Full-sized 11-a-side floodlit astro turf pitch hosting professional weekend academies and corporate leagues.</p>
+            <a href="404.html" class="btn btn-outline btn-sm">Enroll In Football</a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="sports-card" data-aos="fade-up" style="animation-delay: 200ms;">
+          <div class="sports-card-img">
+            <img src="assets/images/facility-indoor-arena.webp" alt="Hardwood indoor basketball arena with spectator seating">
+            <span class="sports-tag">Basketball Academy</span>
+          </div>
+          <div class="sports-card-body">
+            <h3>Indoor Hardwood Basketball</h3>
+            <p>FIBA standard maple wood court with glass backboards, digital scoreboards, and shot-arc trajectory trackers.</p>
+            <a href="404.html" class="btn btn-outline btn-sm">Enroll In Basketball</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="sports-programs.html" class="btn btn-primary btn-lg">View All 12 Sports Academies</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       7. WORLD-CLASS AMENITIES & RECOVERY SECTION
+       ========================================================================== -->
+  <section class="py-section bg-dark" aria-label="Amenities and Recovery">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag" style="background: rgba(255,255,255,0.1); color: #60a5fa;">Wellness & Recovery</span>
+        <h2 style="color: #ffffff;">Accelerate Recovery With Modern Science</h2>
+        <p style="color: #cbd5e1;">Peak athletic performance happens when training intensity is matched with state-of-the-art restorative therapies.</p>
+      </div>
+
+      <div class="card-grid-3">
+        <div class="sports-card" style="background: #0f172a; border-color: #334155;" data-aos="fade-up">
+          <div class="sports-card-img">
+            <img src="assets/images/facility-recovery-spa.webp" alt="Hydrotherapy plunge pools and thermal recovery spa">
+          </div>
+          <div class="sports-card-body">
+            <h3 style="color: #ffffff;">Thermal Hydro Plunge</h3>
+            <p style="color: #cbd5e1;">Contrast water therapy with 10°C ice plunge and 38°C mineral baths to flush metabolic byproducts rapidly.</p>
+            <a href="404.html" class="btn btn-outline-light btn-sm">Explore Recovery</a>
+          </div>
+        </div>
+
+        <div class="sports-card" style="background: #0f172a; border-color: #334155;" data-aos="fade-up" style="animation-delay: 100ms;">
+          <div class="sports-card-img">
+            <img src="assets/images/facility-crossfit-gym.webp" alt="Functional fitness rig and metabolic conditioning arena">
+          </div>
+          <div class="sports-card-body">
+            <h3 style="color: #ffffff;">CrossFit & Conditioning</h3>
+            <p style="color: #cbd5e1;">Rogue rigs, Concept2 ergometers, ski-ergs, and sled lanes for high-octane metabolic performance.</p>
+            <a href="404.html" class="btn btn-outline-light btn-sm">Explore Conditioning</a>
+          </div>
+        </div>
+
+        <div class="sports-card" style="background: #0f172a; border-color: #334155;" data-aos="fade-up" style="animation-delay: 200ms;">
+          <div class="sports-card-img">
+            <img src="assets/images/facility-yoga-studio.webp" alt="Serene bamboo floor yoga and athletic mobility studio">
+          </div>
+          <div class="sports-card-body">
+            <h3 style="color: #ffffff;">Athletic Mobility Studio</h3>
+            <p style="color: #cbd5e1;">Dedicated spaces for fascial release, Ashtanga yoga, and sport-specific flexibility conditioning.</p>
+            <a href="404.html" class="btn btn-outline-light btn-sm">Explore Mobility</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       8. EXPERT FACULTY & COACHES (REAL HUMAN FACES)
+       ========================================================================== -->
+  <section class="py-section bg-surface" aria-label="Coaching Faculty">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Olympian Leadership</span>
+        <h2>Mentored By National & International Champions</h2>
+        <p>Our coaching roster comprises former Olympians, Asian Games medalists, and certified high-performance directors.</p>
+      </div>
+
+      <div class="card-grid-4">
+        <!-- Coach 1 -->
+        <div class="coach-card" data-aos="fade-up">
+          <div class="coach-img-wrapper">
+            <img src="assets/images/coach-marcus-vance.webp" alt="Marcus Vance Head Coach Athletics and Sprinting">
+          </div>
+          <div class="coach-info">
+            <h4>Marcus Vance</h4>
+            <div class="coach-discipline">Director of Athletics</div>
+            <p class="coach-bio">Former national sprint champion with 16 years of elite coaching experience across 3 Olympic games.</p>
+            <a href="404.html" class="btn btn-outline btn-sm">View Profile</a>
+          </div>
+        </div>
+
+        <!-- Coach 2 -->
+        <div class="coach-card" data-aos="fade-up" style="animation-delay: 100ms;">
+          <div class="coach-img-wrapper">
+            <img src="assets/images/coach-sarah-jenkins.webp" alt="Sarah Jenkins Director of Aquatics and Swimming">
+          </div>
+          <div class="coach-info">
+            <h4>Sarah Jenkins</h4>
+            <div class="coach-discipline">Head of Aquatics</div>
+            <p class="coach-bio">ASCA Level 5 swim master coach who has trained over 20 national championship podium finishers.</p>
+            <a href="404.html" class="btn btn-outline btn-sm">View Profile</a>
+          </div>
+        </div>
+
+        <!-- Coach 3 -->
+        <div class="coach-card" data-aos="fade-up" style="animation-delay: 200ms;">
+          <div class="coach-img-wrapper">
+            <img src="assets/images/coach-david-chen.webp" alt="David Chen Head Badminton Pro">
+          </div>
+          <div class="coach-info">
+            <h4>David Chen</h4>
+            <div class="coach-discipline">Racket Sports Master</div>
+            <p class="coach-bio">BWF Level 3 accredited coach specializing in precision footwork and high-speed tactical deception.</p>
+            <a href="404.html" class="btn btn-outline btn-sm">View Profile</a>
+          </div>
+        </div>
+
+        <!-- Coach 4 -->
+        <div class="coach-card" data-aos="fade-up" style="animation-delay: 300ms;">
+          <div class="coach-img-wrapper">
+            <img src="assets/images/coach-elena-rodriguez.webp" alt="Elena Rodriguez High Performance Strength and Conditioning Specialist">
+          </div>
+          <div class="coach-info">
+            <h4>Elena Rodriguez</h4>
+            <div class="coach-discipline">Bio-Mechanics Specialist</div>
+            <p class="coach-bio">CSCS certified strength coach directing our force-plate kinetic assessments and injury prevention programs.</p>
+            <a href="404.html" class="btn btn-outline btn-sm">View Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       9. ATHLETE TESTIMONIALS (REAL HUMAN FACES)
+       ========================================================================== -->
+  <section class="py-section bg-subtle" aria-label="Member Testimonials">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag accent">Member Stories</span>
+        <h2>Hear From Our Thriving Sporting Community</h2>
+        <p>Real stories of dedication, transformation, and athletic triumph at Stackly Sports Club.</p>
+      </div>
+
+      <div class="card-grid-3">
+        <div class="testimonial-card" data-aos="fade-up">
+          <div>
+            <div class="stars" aria-label="5 stars rating">
+              &#9733;&#9733;&#9733;&#9733;&#9733;
+            </div>
+            <p class="testimonial-quote">
+              "The BWF-certified wooden courts and Coach David's agility drills transformed my badminton game. I shaved 40 milliseconds off my reaction time in just 4 months of structured training."
+            </p>
+          </div>
+          <div class="athlete-profile">
+            <img src="assets/images/member-arjun-patel.webp" alt="Arjun Patel Junior Badminton Athlete" class="athlete-avatar">
+            <div class="athlete-meta">
+              <h5>Arjun Patel</h5>
+              <span>Junior State Badminton Finalist</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-aos="fade-up" style="animation-delay: 100ms;">
+          <div>
+            <div class="stars" aria-label="5 stars rating">
+              &#9733;&#9733;&#9733;&#9733;&#9733;
+            </div>
+            <p class="testimonial-quote">
+              "As a working executive, having access to an Olympic pool that opens at 5:00 AM with spotless UV filtration and contrast plunge baths has completely elevated my stamina and productivity."
+            </p>
+          </div>
+          <div class="athlete-profile">
+            <img src="assets/images/member-priya-sharma.webp" alt="Priya Sharma Corporate Marathon Member" class="athlete-avatar">
+            <div class="athlete-meta">
+              <h5>Priya Sharma</h5>
+              <span>Marathoner & Corporate Gold Member</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card" data-aos="fade-up" style="animation-delay: 200ms;">
+          <div>
+            <div class="stars" aria-label="5 stars rating">
+              &#9733;&#9733;&#9733;&#9733;&#9733;
+            </div>
+            <p class="testimonial-quote">
+              "The community here is unmatched. Whether playing under the floodlit tennis courts on a Saturday night or recharging in the thermal spa, Stackly has become an indispensable second home."
+            </p>
+          </div>
+          <div class="athlete-profile">
+            <img src="assets/images/member-michael-ross.webp" alt="Michael Ross Tennis League Member" class="athlete-avatar">
+            <div class="athlete-meta">
+              <h5>Michael Ross</h5>
+              <span>Inter-Club Tennis Captain</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       10. MEMBERSHIP TIERS & PRICING OVERVIEW
+       ========================================================================== -->
+  <section class="py-section bg-surface" aria-label="Membership Tiers">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Tiered Access</span>
+        <h2>Select Your Athletic Membership Path</h2>
+        <p>Flexible packages designed for individuals, competitive athletes, and active families.</p>
+      </div>
+
+      <div class="card-grid-3">
+        <!-- Tier 1 -->
+        <div class="pricing-card" data-aos="fade-up">
+          <h3>Club Athlete</h3>
+          <p class="pricing-desc">Ideal for fitness enthusiasts seeking access to premier courts and high-tech gym.</p>
+          <div class="pricing-amount">
+            <span class="currency">₹</span>
+            <span class="price">3,499</span>
+            <span class="period">/ month</span>
+          </div>
+          <ul class="pricing-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Access to High-Tech Gym & Track
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Badminton & Squash Court Pass
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Locker & Shower Pavilion Access
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Digital App & Booking Portal
+            </li>
+          </ul>
+          <a href="404.html" class="btn btn-outline btn-block">Choose Athlete Pass</a>
+        </div>
+
+        <!-- Tier 2 (Featured) -->
+        <div class="pricing-card featured" data-aos="fade-up" style="animation-delay: 100ms;">
+          <span class="pricing-badge">Most Popular</span>
+          <h3>Pro Champion</h3>
+          <p class="pricing-desc">Complete all-arena access with certified coach mentoring and thermal hydro recovery.</p>
+          <div class="pricing-amount">
+            <span class="currency">₹</span>
+            <span class="price">6,999</span>
+            <span class="period">/ month</span>
+          </div>
+          <ul class="pricing-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              All Tier 1 Privileges Included
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Olympic 50m Swimming Pool Access
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              4 Personal Training Sessions / Mo
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Contrast Hydro & Cryo Spa Pass
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Priority Court Booking (7 Days Early)
+            </li>
+          </ul>
+          <a href="404.html" class="btn btn-primary btn-block">Choose Pro Champion</a>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="pricing-card" data-aos="fade-up" style="animation-delay: 200ms;">
+          <h3>Elite VIP Patron</h3>
+          <p class="pricing-desc">The ultimate bespoke athletic lifestyle with dedicated concierge and private arena slots.</p>
+          <div class="pricing-amount">
+            <span class="currency">₹</span>
+            <span class="price">12,499</span>
+            <span class="period">/ month</span>
+          </div>
+          <ul class="pricing-features">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Unlimited All-Facility Access
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Unlimited Olympian Mentorship
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Bio-Mechanics Force Plate Analysis
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Reserved VIP Parking & Private Locker
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Family Add-On Privileges
+            </li>
+          </ul>
+          <a href="404.html" class="btn btn-outline btn-block">Choose Elite VIP</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       11. CALL TO ACTION SECTION
+       ========================================================================== -->
+  <section class="py-section" aria-label="Action Banner">
+    <div class="container">
+      <div class="cta-banner" data-aos="zoom-in">
+        <div class="cta-content">
+          <span class="section-tag" style="background: rgba(255,255,255,0.15); color: #f59e0b;">Step Onto The Court</span>
+          <h2>Your Journey Toward Peak Athleticism Begins Today</h2>
+          <p>Book a personalized tour of our sports facility with an athletic director and receive a complimentary 1-day pass to our courts and Olympic pool.</p>
+          <div class="cta-actions">
+            <a href="404.html" class="btn btn-accent btn-lg">Claim Free Arena Pass</a>
+            <a href="contact.html" class="btn btn-outline-light btn-lg">Contact Admissions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       12. FULL-WIDTH FOOTER (CONSISTENT ACROSS ENTIRE WEBSITE)
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="index.html" class="brand-link">
+            <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="brand-logo-img">
+          </a>
+          <p>
+            Stackly Sports & Athletic Club is South India's premier sporting institution, dedicated to high-performance athletic development, community wellness, and international standard sporting facilities.
+          </p>
+          <!-- Social Media Icons + Labels (All redirected to 404 as requested) -->
+          <ul class="social-links-list">
+            <li>
+              <a href="404.html" class="social-item-link" aria-label="Follow us on Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                <span>Facebook</span>
+              </a>
+            </li>
+            <li>
+              <a href="404.html" class="social-item-link" aria-label="Follow us on Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <span>Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href="404.html" class="social-item-link" aria-label="Follow us on Twitter X">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                <span>Twitter / X</span>
+              </a>
+            </li>
+            <li>
+              <a href="404.html" class="social-item-link" aria-label="Follow us on LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                <span>LinkedIn</span>
+              </a>
+            </li>
+            <li>
+              <a href="404.html" class="social-item-link" aria-label="Follow us on YouTube">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#090d16"></polygon></svg>
+                <span>YouTube</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Quick Links (Actual Working Links as requested) -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="sports-programs.html">Sports & Programs</a></li>
+            <li><a href="membership.html">Membership Plans</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Sports Services Links (Redirect to 404 as requested) -->
+        <div class="footer-col">
+          <h4>Sport Disciplines</h4>
+          <ul class="footer-links">
+            <li><a href="404.html">Badminton Academy</a></li>
+            <li><a href="404.html">Olympic Swimming</a></li>
+            <li><a href="404.html">Championship Tennis</a></li>
+            <li><a href="404.html">FIFA Pro Football Turf</a></li>
+            <li><a href="404.html">Bio-Mechanics Gym</a></li>
+            <li><a href="404.html">Squash & Racquetball</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="footer-col">
+          <h4>Club Headquarters</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>MMR Complex, Chinna Thirupathi, Salem, Tamil Nadu 636008</span>
+            </li>
+            <li class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <a href="404.html" style="color: #cbd5e1;">+91 9876543210</a>
+            </li>
+            <li class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <a href="404.html" style="color: #cbd5e1;">hello@thestackly.com</a>
+            </li>
+            <li class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <span>Mon - Sun: 5:00 AM - 10:30 PM</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Copyright & Legal -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 Stackly Sports & Athletic Club. All Rights Reserved.</p>
+        <ul class="footer-legal-links">
+          <li><a href="404.html">Privacy Policy</a></li>
+          <li><a href="404.html">Terms of Service</a></li>
+          <li><a href="404.html">Club Bylaws</a></li>
+          <li><a href="404.html">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In | Stackly Sports & Athletic Club</title>
+  <meta name="description" content="Sign in to your Stackly Sports Club member or coach dashboard. Access court reservations, schedules, and analytics.">
+  <link rel="icon" type="image/webp" href="assets/images/logoStackly.webp">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="page-loader" role="status" aria-live="polite">
+    <div class="loader-content">
+      <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="loader-logo">
+      <div class="loader-spinner-wrapper"><div class="loader-spinner"></div></div>
+      <span class="loader-text">Loading Excellence...</span>
+    </div>
+  </div>
+
+  <!-- AUTHENTICATION SPLIT PAGE (NO NAVBAR AS REQUIRED) -->
+  <div class="auth-page">
+    
+    <!-- BRAND / HERO SHOWCASE SIDE -->
+    <div class="auth-brand-side">
+      <div class="auth-brand-header">
+        <a href="index.html" class="auth-logo-link" aria-label="Return to Homepage">
+          <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo">
+        </a>
+        <a href="index.html" class="back-home-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Back to Home
+        </a>
+      </div>
+
+      <div class="auth-brand-content">
+        <span class="section-tag" style="background: rgba(255,255,255,0.12); color: #f59e0b; margin-bottom: 1.25rem;">Athletic Portal</span>
+        <h2>Your Championship Arena Awaits</h2>
+        <p>Log in to access your digital player pass, manage BWF court reservations, review personal training metrics, and communicate with your Olympian coaching squad.</p>
+        
+        <ul class="auth-feature-list">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Instant QR arena access & contactless locker unlocks
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Live court occupancy & automated waitlist booking
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Force plate biomechanical feedback & training regimens
+          </li>
+        </ul>
+      </div>
+
+      <div class="auth-brand-footer">
+        &copy; 2026 Stackly Sports & Athletic Club. Salem, Tamil Nadu.
+      </div>
+    </div>
+
+    <!-- FORM INTERACTION SIDE -->
+    <div class="auth-form-side">
+      <div class="auth-form-container">
+        <div class="auth-form-header">
+          <h2>Member & Coach Access</h2>
+          <p>Enter your credentials to enter your customized athletic dashboard.</p>
+        </div>
+
+        <!-- Demo Credentials Notification Box -->
+        <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: var(--radius-md); padding: 0.85rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #1e40af;">
+          <strong>Quick Demo Login:</strong> Select your role and click Sign In, or enter any valid email with 6+ character password.
+        </div>
+
+        <!-- Social Login Section (All Redirect to 404 as required) -->
+        <div class="social-auth-grid">
+          <a href="404.html" class="btn-social" aria-label="Sign in with Google">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
+            <span>Google</span>
+          </a>
+          <a href="404.html" class="btn-social" aria-label="Sign in with Apple">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.93-2.85-.9.04-2 .6-2.65 1.35-.58.67-1.09 1.74-.95 2.77 1.01.08 2.05-.52 2.67-1.27z"/></svg>
+            <span>Apple</span>
+          </a>
+          <a href="404.html" class="btn-social" aria-label="Sign in with Microsoft">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zm12.6 0H12.6V0H24v11.4z"/></svg>
+            <span>Microsoft</span>
+          </a>
+        </div>
+
+        <div class="auth-divider">
+          <span>Or sign in with email</span>
+        </div>
+
+        <!-- Sign In Form -->
+        <form id="signInForm" novalidate>
+          <!-- Role Selector -->
+          <div class="form-group">
+            <label for="loginRole" class="form-label">
+              <span>Login As / Role <span class="required-badge">*</span></span>
+              <span class="optional-badge">Select Role</span>
+            </label>
+            <select id="loginRole" class="form-control" required>
+              <option value="">Choose role...</option>
+              <option value="member" selected>Club Athlete / Member</option>
+              <option value="coach">Head Coach / Admin</option>
+            </select>
+            <div class="invalid-feedback">Please select your login role.</div>
+          </div>
+
+          <!-- Email Address -->
+          <div class="form-group">
+            <label for="loginEmail" class="form-label">
+              <span>Email Address <span class="required-badge">*</span></span>
+            </label>
+            <input type="email" id="loginEmail" class="form-control" value="athlete@stackly.com" required placeholder="athlete@stackly.com">
+            <div class="invalid-feedback">Please enter a valid email address.</div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <div class="form-label">
+              <span>Password <span class="required-badge">*</span></span>
+              <a href="404.html" style="font-size: 0.8rem; font-weight: 600; color: #1d4ed8;">Forgot Password?</a>
+            </div>
+            <div class="input-wrapper">
+              <input type="password" id="loginPassword" class="form-control" value="Stackly@2026" required placeholder="Enter your password">
+              <button type="button" class="input-password-toggle" data-target="loginPassword" aria-label="Toggle password visibility">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+            <div class="invalid-feedback">Please enter your password (minimum 6 characters).</div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 1.5rem;">
+            Sign In to Dashboard
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 2rem; font-size: 0.925rem; color: #64748b;">
+          Don't have an active membership pass? 
+          <a href="sign-up.html" style="font-weight: 700; color: #1d4ed8;">Create Account</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>
