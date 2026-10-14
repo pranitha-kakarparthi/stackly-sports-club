@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member Action Center & Tools | Stackly Sports Club</title>
+  <meta name="description" content="Access digital turnstile passes, pro-shop gear rentals, executive locker allocations, and account billing tools at Stackly Sports Club.">
+  <link rel="icon" type="image/webp" href="assets/images/logoStackly.webp">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body style="background-color: #f1f5f9;">
+
+  <!-- LOADER -->
+  <div id="page-loader" role="status" aria-live="polite">
+    <div class="loader-content">
+      <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="loader-logo">
+      <div class="loader-spinner-wrapper"><div class="loader-spinner"></div></div>
+      <span class="loader-text">Loading Action Center...</span>
+    </div>
+  </div>
+
+  <div class="dashboard-layout">
+    
+    <!-- DASHBOARD SIDEBAR -->
+    <aside class="dashboard-sidebar" aria-label="Member Navigation">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link" aria-label="Return to Stackly Homepage">
+          <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="sidebar-brand-img">
+        </a>
+      </div>
+
+      <div class="sidebar-role-badge" id="dashRoleBadge">
+        Club Athlete / Member
+      </div>
+
+      <ul class="sidebar-menu">
+        <li>
+          <a href="member-dashboard.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            <span>Overview & KPIs</span>
+          </a>
+        </li>
+        <li>
+          <a href="member-schedule.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Arena Schedule</span>
+          </a>
+        </li>
+        <li>
+          <a href="member-analytics.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            <span>Performance Lab</span>
+          </a>
+        </li>
+        <li>
+          <a href="member-roster.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Directives & Tourneys</span>
+          </a>
+        </li>
+        <li>
+          <a href="member-tools.html" class="sidebar-link active">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span>Action Center</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <button type="button" onclick="logoutUser()" class="btn btn-outline-light btn-block btn-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Sign Out Session
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN DASHBOARD CONTENT AREA -->
+    <main class="dashboard-main">
+      
+      <!-- TOPBAR WITH DYNAMIC GREETING & ATHLETE PROFILE -->
+      <header class="dashboard-topbar">
+        <div class="dashboard-greeting">
+          <h2 id="dashGreetingText">Good Afternoon, Athlete!</h2>
+          <p>Stackly High Performance Complex &bull; Salem, Tamil Nadu &bull; Member Action Center</p>
+        </div>
+
+        <div class="topbar-right">
+          <div class="user-profile-badge">
+            <div class="user-avatar-circle" id="dashUserAvatar">AP</div>
+            <div class="user-info-text">
+              <div class="user-name" id="dashUserName">Arjun Patel</div>
+              <div class="user-role" id="dashUserRole">Pro Tier Athlete</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="dashboard-content-body">
+
+        <!-- SECTION 1: ACTION CENTER HERO BANNER -->
+        <section class="sports-card" style="background: linear-gradient(135deg, #090d16 0%, #1e293b 100%); color: #ffffff; padding: 2rem; margin-bottom: 2rem; border-color: #334155;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+            <div>
+              <span class="section-tag" style="background: rgba(255,255,255,0.12); color: #f59e0b;">Self-Service Operations</span>
+              <h3 style="color: #ffffff; font-size: 1.75rem; margin-top: 0.5rem; margin-bottom: 0.25rem;">Athlete Quick Action Center & Account Services</h3>
+              <p style="color: #cbd5e1; font-size: 0.95rem; margin: 0;">Instant access to turnstile passes, pro-shop equipment servicing, locker allocations, and verified account records.</p>
+            </div>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="404.html" class="btn btn-accent btn-sm">Renew Membership</a>
+              <a href="404.html" class="btn btn-outline-light btn-sm">Download Digital Pass</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: DIGITAL TURNSTILE QR BADGE -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: center;">
+            <div>
+              <span class="section-tag">Access Credentials</span>
+              <h3 style="margin-top: 0.5rem; margin-bottom: 0.75rem;">Digital Contactless Turnstile QR Badge</h3>
+              <p style="font-size: 0.925rem; color: #475569; margin-bottom: 1.25rem;">
+                Hold this screen over the scanner at any arena turnstile, locker room door, or car parking boom barrier for instant biometric authorization.
+              </p>
+              <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.875rem; color: #64748b;">
+                <li>&#10003; <strong>Member Pass ID:</strong> #STK-2026-9812 (Active)</li>
+                <li>&#10003; <strong>Tier Privilege:</strong> Full Access to All 40+ Arenas</li>
+                <li>&#10003; <strong>Encrypted Token:</strong> Refreshes automatically every 60 seconds</li>
+              </ul>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="404.html" class="btn btn-primary btn-sm">Add To Apple Wallet</a>
+                <a href="404.html" class="btn btn-outline btn-sm">Save To Google Pay</a>
+              </div>
+            </div>
+
+            <div style="background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: var(--radius-md); padding: 2rem; text-align: center;">
+              <div style="width: 150px; height: 150px; margin: 0 auto; background: #0f172a; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: #ffffff; padding: 12px;">
+                <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg>
+              </div>
+              <div style="margin-top: 1rem; font-weight: 800; font-family: monospace; font-size: 1.15rem; color: #0f172a;">PASS: STK-8812-PRO</div>
+              <p style="font-size: 0.8rem; color: #64748b; margin: 0.25rem 0 0 0;">Dynamic NFC / RFID Enabled</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: PRO-SHOP GEAR & STRINGING SERVICES -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <div class="table-header-flex">
+            <div>
+              <h3>Pro-Shop Equipment Restringing & Servicing Desk</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Official Yonex Protech 8 electronic stringing machines with 2-hour rush service.</p>
+            </div>
+            <a href="404.html" class="btn btn-primary btn-sm">Submit Gear Request</a>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem;">
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Yonex BG80 Restringing</h4>
+              <p style="font-size: 0.85rem; color: #475569; margin-bottom: 0.75rem;">Custom tension preset at 28 lbs. Ready for pick-up at Pro-Shop desk.</p>
+              <span class="status-badge active">Completed Today</span>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Wilson Blade 98 Grip Replacement</h4>
+              <p style="font-size: 0.85rem; color: #475569; margin-bottom: 0.75rem;">Wilson Pro Overgrip (Comfort Pack) fitted by certified stringer.</p>
+              <span class="status-badge active">Completed Today</span>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Aerosensa 50 Shuttlecock Tube</h4>
+              <p style="font-size: 0.85rem; color: #475569; margin-bottom: 0.75rem;">Speed 2 standard feather shuttlecocks for tournament practice.</p>
+              <a href="404.html" class="btn btn-outline btn-sm">Order Another Tube</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 4: EXECUTIVE LOCKER ROOM MANAGER -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <div class="table-header-flex">
+            <div>
+              <h3>Assigned Executive Locker & Digital Keycard</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Located in the West Wing Championship Pavilion.</p>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">Upgrade to VIP Suite</a>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <div style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Assigned Locker Number</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">Locker #42-W</div>
+              <span class="status-badge active">Digital Key Active</span>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <div style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Locker Type</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">Full Executive</div>
+              <span class="status-badge active">Includes Laundry Service</span>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <div style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Lease Duration</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">Dec 31, 2026</div>
+              <span class="status-badge active">Annual Plan</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: GUEST PASS & PARTNER ALLOCATION -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <div class="table-header-flex">
+            <div>
+              <h3>Complimentary Guest Passes & Visitor Credits</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Invite visiting sparring partners or family to experience Stackly arenas.</p>
+            </div>
+            <a href="404.html" class="btn btn-primary btn-sm">Generate Guest Pass</a>
+          </div>
+
+          <div style="background: #f8fafc; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Remaining Guest Passes This Quarter: <strong>3 of 5 Passes</strong></h4>
+              <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Each pass permits 1 visitor full day access including pool and arena spectator viewing.</p>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">Send Pass via SMS</a>
+          </div>
+        </section>
+
+        <!-- SECTION 6: BILLING & TAX INVOICES -->
+        <section class="dashboard-table-card">
+          <div class="table-header-flex">
+            <div>
+              <h3>Membership Dues, Invoices & Tax Receipts</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Download GST tax invoices for business reimbursement.</p>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">Update Payment Card</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Invoice ID</th>
+                  <th>Billing Period</th>
+                  <th>Description</th>
+                  <th>Amount Paid</th>
+                  <th>Payment Method</th>
+                  <th>Tax Receipt</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>#INV-2026-0814</strong></td>
+                  <td>Jan 2026 - Dec 2026</td>
+                  <td>Annual Pro Champion Athlete Membership</td>
+                  <td>₹45,000</td>
+                  <td>HDFC Corporate Credit Card (••8812)</td>
+                  <td><a href="404.html" class="btn btn-outline btn-sm">Download PDF</a></td>
+                </tr>
+                <tr>
+                  <td><strong>#INV-2026-0612</strong></td>
+                  <td>Oct 2026</td>
+                  <td>Executive Locker Full Season Lease</td>
+                  <td>₹6,000</td>
+                  <td>UPI Autopay (verified)</td>
+                  <td><a href="404.html" class="btn btn-outline btn-sm">Download PDF</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 7: SPORTS MEDICINE & CRYO BOOKING -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <div class="table-header-flex">
+            <div>
+              <h3>Sports Medicine & Hydrotherapy Recovery Sessions</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Certified physiotherapists and hyperbaric recovery chambers on campus.</p>
+            </div>
+            <a href="404.html" class="btn btn-primary btn-sm">Book Treatment</a>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem;">
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Sub-Zero Cryo Chamber</h4>
+              <p style="font-size: 0.85rem; color: #475569; margin-bottom: 0.75rem;">-110°C full body cold exposure. Accelerates soft tissue recovery.</p>
+              <a href="404.html" class="btn btn-outline btn-sm">Book 15-Min Slot</a>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Normatec Compression Boots</h4>
+              <p style="font-size: 0.85rem; color: #475569; margin-bottom: 0.75rem;">Sequential pulse pneumatic compression for post-match lactic clearance.</p>
+              <a href="404.html" class="btn btn-outline btn-sm">Book 30-Min Slot</a>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Dry Needling / Soft Tissue</h4>
+              <p style="font-size: 0.85rem; color: #475569; margin-bottom: 0.75rem;">Certified sports physio manual therapy and tendon release.</p>
+              <a href="404.html" class="btn btn-outline btn-sm">Book Physio Evaluation</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 8: ACCOUNT PREFERENCES & NOTIFICATION SETTINGS -->
+        <section class="sports-card" style="padding: 2rem;">
+          <h3 style="margin-bottom: 0.5rem;">Athlete Preferences & Communication Channels</h3>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">Configure alerts for court waitlists, coach feedback, and tournament entries.</p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="404.html" class="btn btn-primary btn-sm">Manage SMS & WhatsApp Alerts</a>
+            <a href="404.html" class="btn btn-secondary btn-sm">Update Medical Clearance File</a>
+            <a href="404.html" class="btn btn-accent btn-sm">Change Emergency Contact</a>
+            <a href="404.html" class="btn btn-outline btn-sm">Export My Biometric Data</a>
+            <a href="404.html" class="btn btn-outline btn-sm">Privacy & Security Settings</a>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

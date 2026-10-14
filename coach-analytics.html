@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facility Matrix & Safety Analytics | Stackly Sports Club</title>
+  <meta name="description" content="Monitor real-time court surface diagnostics, pool water chemistry, arena lux illumination, and environmental sensors across Stackly Sports Club.">
+  <link rel="icon" type="image/webp" href="assets/images/logoStackly.webp">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body style="background-color: #f1f5f9;">
+
+  <!-- LOADER -->
+  <div id="page-loader" role="status" aria-live="polite">
+    <div class="loader-content">
+      <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="loader-logo">
+      <div class="loader-spinner-wrapper"><div class="loader-spinner"></div></div>
+      <span class="loader-text">Polling Arena Sensors...</span>
+    </div>
+  </div>
+
+  <div class="dashboard-layout">
+    
+    <!-- DASHBOARD SIDEBAR -->
+    <aside class="dashboard-sidebar" aria-label="Coach Navigation">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link" aria-label="Return to Stackly Homepage">
+          <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="sidebar-brand-img">
+        </a>
+      </div>
+
+      <div class="sidebar-role-badge" id="dashRoleBadge">
+        Head Coach / Athletics Director
+      </div>
+
+      <ul class="sidebar-menu">
+        <li>
+          <a href="coach-dashboard.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            <span>Overview & KPIs</span>
+          </a>
+        </li>
+        <li>
+          <a href="coach-schedule.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Master Schedule</span>
+          </a>
+        </li>
+        <li>
+          <a href="coach-roster.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Squad Rosters</span>
+          </a>
+        </li>
+        <li>
+          <a href="coach-analytics.html" class="sidebar-link active">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            <span>Facility Matrix</span>
+          </a>
+        </li>
+        <li>
+          <a href="coach-tools.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span>Operations & Tools</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <button type="button" onclick="logoutUser()" class="btn btn-outline-light btn-block btn-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Sign Out Session
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN DASHBOARD CONTENT AREA -->
+    <main class="dashboard-main">
+      
+      <!-- TOPBAR WITH DYNAMIC GREETING & COACH PROFILE -->
+      <header class="dashboard-topbar">
+        <div class="dashboard-greeting">
+          <h2 id="dashGreetingText">Good Afternoon, Coach!</h2>
+          <p>Stackly High Performance Complex &bull; Salem, Tamil Nadu &bull; Arena Environmental Matrix</p>
+        </div>
+
+        <div class="topbar-right">
+          <div class="user-profile-badge">
+            <div class="user-avatar-circle" id="dashUserAvatar">MV</div>
+            <div class="user-info-text">
+              <div class="user-name" id="dashUserName">Marcus Vance</div>
+              <div class="user-role" id="dashUserRole">Director of Athletics</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="dashboard-content-body">
+
+        <!-- SECTION 1: FACILITY HERO BANNER -->
+        <section class="sports-card" style="background: linear-gradient(135deg, #090d16 0%, #1e293b 100%); color: #ffffff; padding: 2rem; margin-bottom: 2rem; border-color: #475569;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+            <div>
+              <span class="section-tag" style="background: rgba(255,255,255,0.15); color: #60a5fa;">Engineering & Sports Science</span>
+              <h3 style="color: #ffffff; font-size: 1.75rem; margin-top: 0.5rem; margin-bottom: 0.25rem;">Campus Facility Diagnostics & Safety Telemetry</h3>
+              <p style="color: #cbd5e1; font-size: 0.95rem; margin: 0;">Real-time automated IoT telemetry measuring court surface elasticity, air quality, lux illumination, and aquatic pH balance.</p>
+            </div>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="404.html" class="btn btn-primary btn-sm">Schedule Maintenance Work</a>
+              <a href="404.html" class="btn btn-outline-light btn-sm">Export Safety Audit</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: ENVIRONMENTAL STATUS KPIS -->
+        <section class="metrics-row">
+          <div class="metric-card">
+            <div class="metric-card-data">
+              <div class="metric-number">21.8°C</div>
+              <div class="metric-title">Indoor Arena Climate &bull; 54% RH</div>
+            </div>
+            <div class="metric-card-icon blue">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-data">
+              <div class="metric-number">pH 7.35</div>
+              <div class="metric-title">Olympic Pool Water Chemistry</div>
+            </div>
+            <div class="metric-card-icon green">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-data">
+              <div class="metric-number">1,020 Lux</div>
+              <div class="metric-title">BWF Hall Broadcast Lighting</div>
+            </div>
+            <div class="metric-card-icon amber">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-data">
+              <div class="metric-number">64% Red.</div>
+              <div class="metric-title">FIFA Turf Shock Absorption</div>
+            </div>
+            <div class="metric-card-icon purple">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: BWF BADMINTON HALL MICROCLIMATE SENSORS -->
+        <section class="dashboard-table-card">
+          <div class="table-header-flex">
+            <div>
+              <h3>BWF Badminton Arena: Environmental & Surface Matrix</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Certified to BWF Grade 1 tournament playing conditions.</p>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">Calibrate Court HVAC</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Sensor Pod Location</th>
+                  <th>Ambient Temperature</th>
+                  <th>Relative Humidity</th>
+                  <th>Draft Air Velocity</th>
+                  <th>Illumination (Lux)</th>
+                  <th>Surface Elasticity</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>North Pavilion (Courts 1-4)</strong></td>
+                  <td>21.6°C</td>
+                  <td>53% RH</td>
+                  <td>0.12 m/s (Zero Drift)</td>
+                  <td>1,040 Lux</td>
+                  <td>58% Force Reduction</td>
+                  <td><span class="status-badge active">Passed Standards</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Center Show Court (Court 5)</strong></td>
+                  <td>21.8°C</td>
+                  <td>54% RH</td>
+                  <td>0.08 m/s (Zero Drift)</td>
+                  <td>1,200 Lux (HD TV)</td>
+                  <td>60% Force Reduction</td>
+                  <td><span class="status-badge active">Championship State</span></td>
+                </tr>
+                <tr>
+                  <td><strong>South Pavilion (Courts 6-12)</strong></td>
+                  <td>22.1°C</td>
+                  <td>56% RH</td>
+                  <td>0.14 m/s (Zero Drift)</td>
+                  <td>980 Lux</td>
+                  <td>58% Force Reduction</td>
+                  <td><span class="status-badge active">Passed Standards</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 4: OLYMPIC AQUATICS WATER SENSORS -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <h3 style="margin-bottom: 0.5rem;">Olympic 50m Pool: Water Quality & Filtration Telemetry</h3>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">Defensor ozone secondary purification system with dual regenerative media filtration.</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <div style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Water pH Balance</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">7.35 pH</div>
+              <span class="status-badge active">Ideal Neutral (7.2 - 7.6)</span>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <div style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Free Chlorine Residual</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">0.85 ppm</div>
+              <span class="status-badge active">Low Irritant Ozone Sync</span>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <div style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Water Temperature</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">26.4°C</div>
+              <span class="status-badge active">FINA Competition Spec</span>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <div style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Water Clarity Index</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">0.04 NTU</div>
+              <span class="status-badge active">Crystal Clear &bull; 100% Floor Sight</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: FIFA FOOTBALL TURF TELEMETRY -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <h3 style="margin-bottom: 0.5rem;">FIFA Quality Pro Football Stadium: Surface Diagnostics</h3>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">Shockpad dampening and organic EPDM rubber infill testing.</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+            <div style="background: #f8fafc; padding: 1.5rem; border-radius: var(--radius-md); border-left: 4px solid #16a34a;">
+              <h4 style="font-size: 1.05rem; margin-bottom: 0.25rem;">Vertical Ball Rebound: 82 cm (FIFA Spec: 65 - 100 cm)</h4>
+              <p style="font-size: 0.875rem; color: #475569; margin: 0 0 0.5rem 0;">Uniform bounce across goal mouths, midfield, and corner quadrants.</p>
+              <span class="status-badge active">Certified Passed</span>
+            </div>
+            <div style="background: #f8fafc; padding: 1.5rem; border-radius: var(--radius-md); border-left: 4px solid #2563eb;">
+              <h4 style="font-size: 1.05rem; margin-bottom: 0.25rem;">Rotational Resistance (Torque): 38 N&bull;m</h4>
+              <p style="font-size: 0.875rem; color: #475569; margin: 0 0 0.5rem 0;">Optimal stud traction minimizing non-contact ACL rotational strains.</p>
+              <span class="status-badge active">Certified Passed</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 6: CONTRAST CRYO CHAMBERS & HVAC LOG -->
+        <section class="dashboard-table-card">
+          <div class="table-header-flex">
+            <div>
+              <h3>Cryo Chamber & Hydrotherapy Compressor Telemetry</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Liquid nitrogen gas vaporization systems and dual compressors.</p>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">Inspect Compressors</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Apparatus</th>
+                  <th>Operating Core Temp</th>
+                  <th>Compressor Pressure</th>
+                  <th>Daily Cycles</th>
+                  <th>Last Inspection</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Sub-Zero Whole Body Cryo #01</strong></td>
+                  <td>-110°C</td>
+                  <td>28.4 PSI (Optimal)</td>
+                  <td>24 Sessions</td>
+                  <td>Today 04:00 AM</td>
+                  <td><span class="status-badge active">Operational</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Sub-Zero Whole Body Cryo #02</strong></td>
+                  <td>-108°C</td>
+                  <td>27.8 PSI (Optimal)</td>
+                  <td>20 Sessions</td>
+                  <td>Today 04:00 AM</td>
+                  <td><span class="status-badge active">Operational</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Cold Plunge Contrast Basin #01</strong></td>
+                  <td>+4.2°C</td>
+                  <td>Chiller Unit Active</td>
+                  <td>42 Athletes</td>
+                  <td>Today 05:00 AM</td>
+                  <td><span class="status-badge active">Operational</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 7: PREDICTIVE EQUIPMENT WEAR & RESURFACING CALENDAR -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <h3 style="margin-bottom: 0.5rem;">Predictive Maintenance & Arena Resurfacing Calendar</h3>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">Engineered wear schedules based on cumulative athlete foot traffic.</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem;">
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">BWF Mat Scrubbing & Buffing</h4>
+              <p style="font-size: 0.85rem; color: #475569; margin: 0 0 0.5rem 0;">Scheduled for Sunday night 11:00 PM.</p>
+              <span class="status-badge active">Routine Service</span>
+            </div>
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Tennis Plexicushion Wash</h4>
+              <p style="font-size: 0.85rem; color: #475569; margin: 0 0 0.5rem 0;">High-pressure organic wash every 14 days.</p>
+              <span class="status-badge active">Routine Service</span>
+            </div>
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Mondo Track Laser Inspection</h4>
+              <p style="font-size: 0.85rem; color: #475569; margin: 0 0 0.5rem 0;">Next quarterly millimeter scan in 45 days.</p>
+              <span class="status-badge active">Scheduled</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 8: WORK ORDER ACTIONS -->
+        <section class="sports-card" style="padding: 2rem;">
+          <h3 style="margin-bottom: 0.5rem;">Engineering Work Orders & Quality Sign-Off</h3>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">Authorize contractor work orders, sign off daily health audits, or commission sensor pod recalibrations.</p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="404.html" class="btn btn-primary btn-sm">Issue Maintenance Work Order</a>
+            <a href="404.html" class="btn btn-secondary btn-sm">Sign Daily Health Inspection</a>
+            <a href="404.html" class="btn btn-accent btn-sm">Recalibrate IoT Lux Sensor</a>
+            <a href="404.html" class="btn btn-outline btn-sm">Download Environmental Audit</a>
+            <a href="404.html" class="btn btn-outline btn-sm">Contact Head Facility Engineer</a>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

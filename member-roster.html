@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coaching Directives & Tournaments | Stackly Sports Club</title>
+  <meta name="description" content="View assigned coach feedback, nutrition protocols, upcoming tournament seeding, and club sparring partners at Stackly Sports Club.">
+  <link rel="icon" type="image/webp" href="assets/images/logoStackly.webp">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body style="background-color: #f1f5f9;">
+
+  <!-- LOADER -->
+  <div id="page-loader" role="status" aria-live="polite">
+    <div class="loader-content">
+      <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="loader-logo">
+      <div class="loader-spinner-wrapper"><div class="loader-spinner"></div></div>
+      <span class="loader-text">Loading Directives & Tourneys...</span>
+    </div>
+  </div>
+
+  <div class="dashboard-layout">
+    
+    <!-- DASHBOARD SIDEBAR -->
+    <aside class="dashboard-sidebar" aria-label="Member Navigation">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link" aria-label="Return to Stackly Homepage">
+          <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="sidebar-brand-img">
+        </a>
+      </div>
+
+      <div class="sidebar-role-badge" id="dashRoleBadge">
+        Club Athlete / Member
+      </div>
+
+      <ul class="sidebar-menu">
+        <li>
+          <a href="member-dashboard.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            <span>Overview & KPIs</span>
+          </a>
+        </li>
+        <li>
+          <a href="member-schedule.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Arena Schedule</span>
+          </a>
+        </li>
+        <li>
+          <a href="member-analytics.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            <span>Performance Lab</span>
+          </a>
+        </li>
+        <li>
+          <a href="member-roster.html" class="sidebar-link active">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Directives & Tourneys</span>
+          </a>
+        </li>
+        <li>
+          <a href="member-tools.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span>Action Center</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <button type="button" onclick="logoutUser()" class="btn btn-outline-light btn-block btn-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Sign Out Session
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN DASHBOARD CONTENT AREA -->
+    <main class="dashboard-main">
+      
+      <!-- TOPBAR WITH DYNAMIC GREETING & ATHLETE PROFILE -->
+      <header class="dashboard-topbar">
+        <div class="dashboard-greeting">
+          <h2 id="dashGreetingText">Good Afternoon, Athlete!</h2>
+          <p>Stackly High Performance Complex &bull; Salem, Tamil Nadu &bull; Coaching Mentorship & Circuit Hub</p>
+        </div>
+
+        <div class="topbar-right">
+          <div class="user-profile-badge">
+            <div class="user-avatar-circle" id="dashUserAvatar">AP</div>
+            <div class="user-info-text">
+              <div class="user-name" id="dashUserName">Arjun Patel</div>
+              <div class="user-role" id="dashUserRole">Pro Tier Athlete</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="dashboard-content-body">
+
+        <!-- SECTION 1: DIRECTIVES OVERVIEW BANNER -->
+        <section class="sports-card" style="background: linear-gradient(135deg, #090d16 0%, #064e3b 100%); color: #ffffff; padding: 2rem; margin-bottom: 2rem; border-color: #047857;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+            <div>
+              <span class="section-tag" style="background: rgba(255,255,255,0.12); color: #34d399;">Academy Mentorship</span>
+              <h3 style="color: #ffffff; font-size: 1.75rem; margin-top: 0.5rem; margin-bottom: 0.25rem;">Coaching Directives & Championship Circuit</h3>
+              <p style="color: #cbd5e1; font-size: 0.95rem; margin: 0;">Review personalized training notes from Olympian mentors, active nutritional protocols, and tournament draws.</p>
+            </div>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="404.html" class="btn btn-accent btn-sm">Message Head Coach</a>
+              <a href="404.html" class="btn btn-outline-light btn-sm">Enter Next Tournament</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: PERSONAL MENTORSHIP ROSTER -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <h3 style="margin-bottom: 0.5rem;">Assigned Coaching & Sports Medicine Squad</h3>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">Your dedicated multidisciplinary high-performance support team.</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+            <div style="background: #f8fafc; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--color-border); display: flex; gap: 1rem; align-items: center;">
+              <img src="assets/images/coach-marcus-vance.webp" alt="Coach Marcus Vance" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #1d4ed8;">
+              <div>
+                <h4 style="font-size: 1.05rem; margin: 0;">Marcus Vance</h4>
+                <div style="font-size: 0.85rem; color: #1d4ed8; font-weight: 700;">Director of Athletics & S&C</div>
+                <p style="font-size: 0.8rem; color: #64748b; margin: 0.25rem 0 0 0;">Olympic Sprint Coach &bull; Biomechanics Lead</p>
+              </div>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--color-border); display: flex; gap: 1rem; align-items: center;">
+              <img src="assets/images/coach-david-chen.webp" alt="Coach David Chen" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #059669;">
+              <div>
+                <h4 style="font-size: 1.05rem; margin: 0;">David Chen</h4>
+                <div style="font-size: 0.85rem; color: #059669; font-weight: 700;">Head Badminton Tactician</div>
+                <p style="font-size: 0.8rem; color: #64748b; margin: 0.25rem 0 0 0;">Former BWF World Tour Professional</p>
+              </div>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--color-border); display: flex; gap: 1rem; align-items: center;">
+              <img src="assets/images/leader-rachel-adams.webp" alt="Dr. Rachel Adams" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #d97706;">
+              <div>
+                <h4 style="font-size: 1.05rem; margin: 0;">Dr. Rachel Adams</h4>
+                <div style="font-size: 0.85rem; color: #d97706; font-weight: 700;">Sports Nutrition & Biomarkers</div>
+                <p style="font-size: 0.8rem; color: #64748b; margin: 0.25rem 0 0 0;">Ph.D. Sports Physiology & Hydration</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: RECENT COACH DIRECTIVES & VIDEO REVIEWS -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <div class="table-header-flex">
+            <div>
+              <h3>Recent Technical Directives & Video Clip Annotations</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">High-speed 240fps court replay feedback from your tactical sessions.</p>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">Open 240fps Replay</a>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div style="background: #f8fafc; padding: 1.5rem; border-radius: var(--radius-md); border-left: 4px solid #1d4ed8;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                <h4 style="font-size: 1.05rem; margin: 0;">Forehand Cross-Court Smash Angular Velocity</h4>
+                <span style="font-size: 0.8rem; color: #64748b;">Logged yesterday by Coach David Chen</span>
+              </div>
+              <p style="font-size: 0.9rem; color: #475569; margin-bottom: 0.75rem;">
+                "Arjun, your forearm pronation clocked at 1,120 deg/sec on the steep angle. Ensure you maintain full abdominal compression on landing to stabilize your left sacroiliac joint."
+              </p>
+              <div style="display: flex; gap: 0.75rem;">
+                <a href="404.html" class="btn btn-primary btn-sm">Watch Annotated Clip</a>
+                <a href="404.html" class="btn btn-outline btn-sm">Mark Understood</a>
+              </div>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.5rem; border-radius: var(--radius-md); border-left: 4px solid #059669;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap;">
+                <h4 style="font-size: 1.05rem; margin: 0;">Sprint Stride Frequency in Final 20 Meters</h4>
+                <span style="font-size: 0.8rem; color: #64748b;">Logged Oct 12 by Coach Marcus Vance</span>
+              </div>
+              <p style="font-size: 0.9rem; color: #475569; margin-bottom: 0.75rem;">
+                "Your ground contact time increased from 0.11s to 0.14s during repetitions 5 and 6. Focus on stiff ankle dorsiflexion strike on the Mondotrack surface."
+              </p>
+              <div style="display: flex; gap: 0.75rem;">
+                <a href="404.html" class="btn btn-primary btn-sm">Watch Annotated Clip</a>
+                <a href="404.html" class="btn btn-outline btn-sm">Mark Understood</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 4: NUTRITION & RECOVERY PROTOCOL -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <h3 style="margin-bottom: 0.5rem;">Personalized Macro Protocol & Micronutrient Plan</h3>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">Prescribed for active match-play preparation and metabolic recovery.</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <div style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Daily Protein Intake</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">165 g</div>
+              <span class="status-badge active">2.1g per kg Bodyweight</span>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <div style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Clean Complex Carbs</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">280 g</div>
+              <span class="status-badge active">Glycogen Satiation</span>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <div style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Hydration + Electrolytes</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">3.8 Liters</div>
+              <span class="status-badge active">Sodium 600mg / Liter</span>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <div style="font-size: 0.85rem; color: #64748b; font-weight: 700;">Post-Court Shake</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0.25rem 0;">35g Whey + Tart Cherry</div>
+              <span class="status-badge active">Anti-Inflammatory</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: REGISTERED CHAMPIONSHIP ENTRIES -->
+        <section class="dashboard-table-card">
+          <div class="table-header-flex">
+            <div>
+              <h3>Active Championship Tournament Registrations</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Official entry passes issued under Stackly Sports & Athletic Club accreditation.</p>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">Download Player Badge</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Tournament Title</th>
+                  <th>Sanctioning Body</th>
+                  <th>Draw Category</th>
+                  <th>Dates & Venue</th>
+                  <th>Seeding</th>
+                  <th>Draw Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Salem Open Badminton Masters</strong></td>
+                  <td>TNBA / BAI Ranking</td>
+                  <td>Men's Singles (Open)</td>
+                  <td>Nov 22 - 24 &bull; Stackly Main Arena</td>
+                  <td><strong>Seed #4</strong></td>
+                  <td><span class="status-badge active">Draw Confirmed</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Stackly 10K Winter Classic</strong></td>
+                  <td>AFI Certified Track</td>
+                  <td>Senior Men's Division</td>
+                  <td>Dec 14 &bull; 400m Oval & Highway</td>
+                  <td><strong>Bib #402</strong></td>
+                  <td><span class="status-badge active">Wave 1 Confirmed</span></td>
+                </tr>
+                <tr>
+                  <td><strong>South India Inter-Club Racket Cup</strong></td>
+                  <td>All-India Interclub</td>
+                  <td>Men's Doubles Premier</td>
+                  <td>Jan 08 - 11 &bull; Bengaluru Arena</td>
+                  <td><strong>Seed #2</strong></td>
+                  <td><span class="status-badge pending">Roster Verification</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 6: UPCOMING REGIONAL CIRCUIT EVENTS -->
+        <section class="dashboard-table-card">
+          <div class="table-header-flex">
+            <div>
+              <h3>Upcoming Regional Circuit Registrations Open</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Stackly covers 100% of registration fees for Pro Tier club athletes.</p>
+            </div>
+            <a href="404.html" class="btn btn-primary btn-sm">Register For Event</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Event Name</th>
+                  <th>Sport</th>
+                  <th>Registration Deadline</th>
+                  <th>Prize Purse</th>
+                  <th>Recommended Tier</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Tamil Nadu State Badminton Ranking</strong></td>
+                  <td>Badminton</td>
+                  <td>Nov 05, 2026</td>
+                  <td>₹2,50,000</td>
+                  <td>Pro Champion</td>
+                  <td><a href="404.html" class="btn btn-primary btn-sm">One-Click Entry</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Salem ITF Masters Tennis Invitational</strong></td>
+                  <td>Tennis</td>
+                  <td>Nov 18, 2026</td>
+                  <td>₹1,80,000</td>
+                  <td>Gold & Pro</td>
+                  <td><a href="404.html" class="btn btn-outline btn-sm">View Eligibility</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Olympic Distance Swim Aquathlon</strong></td>
+                  <td>Aquatics</td>
+                  <td>Dec 01, 2026</td>
+                  <td>₹1,00,000</td>
+                  <td>Open Category</td>
+                  <td><a href="404.html" class="btn btn-outline btn-sm">View Eligibility</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 7: SPARRING MATCHMAKING POOL -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <div class="table-header-flex">
+            <div>
+              <h3>Club Sparring Partner Pool & Matchmaking</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Connect with verified players of equivalent ranking for practice matches.</p>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">Request Partner Match</a>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem;">
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.75rem;">
+                <img src="assets/images/member-michael-ross.webp" alt="Michael Ross" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover;">
+                <div>
+                  <h4 style="font-size: 0.95rem; margin: 0;">Michael Ross</h4>
+                  <span style="font-size: 0.75rem; color: #1d4ed8; font-weight: 700;">Tennis &bull; UTR 8.5</span>
+                </div>
+              </div>
+              <p style="font-size: 0.825rem; color: #475569; margin-bottom: 0.75rem;">Looking for baseline rally partner for Monday evenings 6:00 PM.</p>
+              <a href="404.html" class="btn btn-outline btn-sm btn-block">Accept Match Challenge</a>
+            </div>
+
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+              <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.75rem;">
+                <img src="assets/images/member-priya-sharma.webp" alt="Priya Sharma" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover;">
+                <div>
+                  <h4 style="font-size: 0.95rem; margin: 0;">Priya Sharma</h4>
+                  <span style="font-size: 0.75rem; color: #059669; font-weight: 700;">Athletics &bull; Sub-40 10K</span>
+                </div>
+              </div>
+              <p style="font-size: 0.825rem; color: #475569; margin-bottom: 0.75rem;">Pacing partner for 800m interval repeats on Wednesday mornings.</p>
+              <a href="404.html" class="btn btn-outline btn-sm btn-block">Accept Match Challenge</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 8: ACADEMY RESOURCE CENTER ACTIONS -->
+        <section class="sports-card" style="padding: 2rem;">
+          <h3 style="margin-bottom: 0.5rem;">Academy Drills & Mentorship Actions</h3>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">Access tactical playbooks, schedule personal 1-on-1 reviews, or review tournament draw histories.</p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="404.html" class="btn btn-primary btn-sm">Download Tactical Playbook PDF</a>
+            <a href="404.html" class="btn btn-secondary btn-sm">Schedule 1-on-1 Coach Review</a>
+            <a href="404.html" class="btn btn-accent btn-sm">Submit Match Replay for Critique</a>
+            <a href="404.html" class="btn btn-outline btn-sm">View Tournament Prize Ledger</a>
+            <a href="404.html" class="btn btn-outline btn-sm">Request Sports Psychologist Call</a>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

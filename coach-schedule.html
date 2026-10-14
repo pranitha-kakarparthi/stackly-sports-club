@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Arena Schedule & Allocations | Stackly Sports Club</title>
+  <meta name="description" content="Manage master academy timetables, court allocations, coach shifts, and campus arena schedules at Stackly Sports Club.">
+  <link rel="icon" type="image/webp" href="assets/images/logoStackly.webp">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body style="background-color: #f1f5f9;">
+
+  <!-- LOADER -->
+  <div id="page-loader" role="status" aria-live="polite">
+    <div class="loader-content">
+      <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="loader-logo">
+      <div class="loader-spinner-wrapper"><div class="loader-spinner"></div></div>
+      <span class="loader-text">Loading Master Schedule...</span>
+    </div>
+  </div>
+
+  <div class="dashboard-layout">
+    
+    <!-- DASHBOARD SIDEBAR -->
+    <aside class="dashboard-sidebar" aria-label="Coach Navigation">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link" aria-label="Return to Stackly Homepage">
+          <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="sidebar-brand-img">
+        </a>
+      </div>
+
+      <div class="sidebar-role-badge" id="dashRoleBadge">
+        Head Coach / Athletics Director
+      </div>
+
+      <ul class="sidebar-menu">
+        <li>
+          <a href="coach-dashboard.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            <span>Overview & KPIs</span>
+          </a>
+        </li>
+        <li>
+          <a href="coach-schedule.html" class="sidebar-link active">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Master Schedule</span>
+          </a>
+        </li>
+        <li>
+          <a href="coach-roster.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Squad Rosters</span>
+          </a>
+        </li>
+        <li>
+          <a href="coach-analytics.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            <span>Facility Matrix</span>
+          </a>
+        </li>
+        <li>
+          <a href="coach-tools.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span>Operations & Tools</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <button type="button" onclick="logoutUser()" class="btn btn-outline-light btn-block btn-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Sign Out Session
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN DASHBOARD CONTENT AREA -->
+    <main class="dashboard-main">
+      
+      <!-- TOPBAR WITH DYNAMIC GREETING & COACH PROFILE -->
+      <header class="dashboard-topbar">
+        <div class="dashboard-greeting">
+          <h2 id="dashGreetingText">Good Afternoon, Coach!</h2>
+          <p>Stackly High Performance Complex &bull; Salem, Tamil Nadu &bull; Master Schedule & Arena Allocations</p>
+        </div>
+
+        <div class="topbar-right">
+          <div class="user-profile-badge">
+            <div class="user-avatar-circle" id="dashUserAvatar">MV</div>
+            <div class="user-info-text">
+              <div class="user-name" id="dashUserName">Marcus Vance</div>
+              <div class="user-role" id="dashUserRole">Director of Athletics</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="dashboard-content-body">
+
+        <!-- SECTION 1: MASTER SCHEDULE HERO BANNER -->
+        <section class="sports-card" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: #ffffff; padding: 2rem; margin-bottom: 2rem; border-color: #475569;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+            <div>
+              <span class="section-tag" style="background: rgba(255,255,255,0.15); color: #60a5fa;">Campus Operations Management</span>
+              <h3 style="color: #ffffff; font-size: 1.75rem; margin-top: 0.5rem; margin-bottom: 0.25rem;">Master Coaching Timetable & Arena Allocations</h3>
+              <p style="color: #cbd5e1; font-size: 0.95rem; margin: 0;">Coordinate all 16 academy batches, member recreational court hours, and tournament reserve slots.</p>
+            </div>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="404.html" class="btn btn-primary btn-sm">Add New Batch Session</a>
+              <a href="404.html" class="btn btn-outline-light btn-sm">Export Master Roster PDF</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: CAMPUS UTILIZATION KPIS -->
+        <section class="metrics-row">
+          <div class="metric-card">
+            <div class="metric-card-data">
+              <div class="metric-number">88.4%</div>
+              <div class="metric-title">Arena Utilization Rate (Live)</div>
+            </div>
+            <div class="metric-card-icon green">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-data">
+              <div class="metric-number">18 Coaches</div>
+              <div class="metric-title">Staff On Floor Today</div>
+            </div>
+            <div class="metric-card-icon blue">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-data">
+              <div class="metric-number">38 Sessions</div>
+              <div class="metric-title">Supervised Drills Scheduled</div>
+            </div>
+            <div class="metric-card-icon amber">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line></svg>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-data">
+              <div class="metric-number">99.2%</div>
+              <div class="metric-title">Court Lighting Automation Reliability</div>
+            </div>
+            <div class="metric-card-icon purple">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: MASTER COACHING SCHEDULE TABLE -->
+        <section class="dashboard-table-card">
+          <div class="table-header-flex">
+            <div>
+              <h3>Master Coaching Schedule & Arena Allocations</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Supervised sessions scheduled across campus today.</p>
+            </div>
+            <a href="404.html" class="btn btn-primary btn-sm">Add New Session</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Batch / Session Name</th>
+                  <th>Arena Floor</th>
+                  <th>Time Slot</th>
+                  <th>Assigned Head Coach</th>
+                  <th>Enrolled Athletes</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Junior Sprint Academy (Ages 10-14)</strong></td>
+                  <td>Olympic 400m Track Lane 1-4</td>
+                  <td>6:00 AM - 7:30 AM</td>
+                  <td>Coach Marcus Vance</td>
+                  <td>14 Athletes <span class="status-badge active">Full</span></td>
+                  <td><a href="404.html" class="btn btn-outline btn-sm">Log Attendance</a></td>
+                </tr>
+                <tr>
+                  <td><strong>BWF High-Performance Sparring</strong></td>
+                  <td>Indoor Wooden Courts 1-6</td>
+                  <td>4:00 PM - 6:00 PM</td>
+                  <td>Coach David Chen</td>
+                  <td>12 Athletes <span class="status-badge active">Full</span></td>
+                  <td><a href="404.html" class="btn btn-outline btn-sm">Log Attendance</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Elite Stroke Biomechanics Clinic</strong></td>
+                  <td>50m Competition Pool</td>
+                  <td>6:30 PM - 8:00 PM</td>
+                  <td>Coach Sarah Jenkins</td>
+                  <td>8 Athletes <span class="status-badge pending">2 Openings</span></td>
+                  <td><a href="404.html" class="btn btn-outline btn-sm">Manage Roster</a></td>
+                </tr>
+                <tr>
+                  <td><strong>CrossFit Olympic Lifting Clinic</strong></td>
+                  <td>CrossFit Box & Turf Bay</td>
+                  <td>7:00 PM - 8:30 PM</td>
+                  <td>Coach Elena Rodriguez</td>
+                  <td>16 Athletes <span class="status-badge active">Full</span></td>
+                  <td><a href="404.html" class="btn btn-outline btn-sm">Log Attendance</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 4: BADMINTON HALL 12-COURT LIVE GRID -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3>BWF Badminton Arena: 12-Court Live Status</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Live RFID turnstile sensor count & automated court lighting status.</p>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">Override Lighting</a>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
+            <div style="background: #f8fafc; padding: 1rem; border-radius: var(--radius-md); border-top: 3px solid #16a34a;">
+              <div style="font-weight: 800; font-size: 0.95rem;">Court 01 (Yonex Mat)</div>
+              <span class="status-badge active" style="margin-top: 0.5rem; display: inline-block;">Active: Member Match</span>
+            </div>
+            <div style="background: #f8fafc; padding: 1rem; border-radius: var(--radius-md); border-top: 3px solid #16a34a;">
+              <div style="font-weight: 800; font-size: 0.95rem;">Court 02 (Yonex Mat)</div>
+              <span class="status-badge active" style="margin-top: 0.5rem; display: inline-block;">Active: Member Match</span>
+            </div>
+            <div style="background: #f8fafc; padding: 1rem; border-radius: var(--radius-md); border-top: 3px solid #2563eb;">
+              <div style="font-weight: 800; font-size: 0.95rem;">Court 03 (Wooden Floor)</div>
+              <span class="status-badge active" style="margin-top: 0.5rem; display: inline-block;">Academy: Drills</span>
+            </div>
+            <div style="background: #f8fafc; padding: 1rem; border-radius: var(--radius-md); border-top: 3px solid #2563eb;">
+              <div style="font-weight: 800; font-size: 0.95rem;">Court 04 (Wooden Floor)</div>
+              <span class="status-badge active" style="margin-top: 0.5rem; display: inline-block;">Arjun Patel (Private)</span>
+            </div>
+            <div style="background: #f8fafc; padding: 1rem; border-radius: var(--radius-md); border-top: 3px solid #94a3b8;">
+              <div style="font-weight: 800; font-size: 0.95rem;">Court 05 (Wooden Floor)</div>
+              <span style="font-size: 0.775rem; color: #64748b; font-weight: 700; margin-top: 0.5rem; display: inline-block;">Vacant (Next: 5:00 PM)</span>
+            </div>
+            <div style="background: #f8fafc; padding: 1rem; border-radius: var(--radius-md); border-top: 3px solid #f59e0b;">
+              <div style="font-weight: 800; font-size: 0.95rem;">Court 06 (Show Court)</div>
+              <span class="status-badge pending" style="margin-top: 0.5rem; display: inline-block;">Maintenance Clean</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: OUTDOOR TRACK & TURF ALLOCATIONS -->
+        <section class="dashboard-table-card">
+          <div class="table-header-flex">
+            <div>
+              <h3>Outdoor Stadium: 400m Track & FIFA Turf Grid</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Floodlight bookings and regional team camp allocations.</p>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">Manage Stadium Gate</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Arena Sector</th>
+                  <th>Current Allocation</th>
+                  <th>Hours</th>
+                  <th>Squad / League</th>
+                  <th>Floodlights</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Track Lanes 1 - 4</strong></td>
+                  <td>Elite Sprint & Hurdles</td>
+                  <td>4:00 PM - 6:00 PM</td>
+                  <td>Junior State Squad</td>
+                  <td><span class="status-badge active">1,200 Lux Active</span></td>
+                  <td><a href="404.html" class="btn btn-outline btn-sm">Shift Lane</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Track Lanes 5 - 8</strong></td>
+                  <td>Open Member Jogging</td>
+                  <td>4:00 PM - 9:00 PM</td>
+                  <td>General Member Access</td>
+                  <td><span class="status-badge active">Operational</span></td>
+                  <td><a href="404.html" class="btn btn-outline btn-sm">View Check-ins</a></td>
+                </tr>
+                <tr>
+                  <td><strong>FIFA Football Turf</strong></td>
+                  <td>Salem Premier Corporate Cup</td>
+                  <td>6:30 PM - 9:30 PM</td>
+                  <td>TCS vs Infosys Semifinal</td>
+                  <td><span class="status-badge active">Broadcast Floodlights</span></td>
+                  <td><a href="404.html" class="btn btn-outline btn-sm">Inspect Turf</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 6: OLYMPIC AQUATIC COMPLEX LANE MATRIX -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <h3 style="margin-bottom: 0.5rem;">Olympic 50m Pool: 10-Lane Allocation Status</h3>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">Water temperature calibrated at 26.5°C &bull; Lifeguards on active duty.</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border-left: 4px solid #1d4ed8;">
+              <div style="font-weight: 700; font-size: 0.9rem;">Lanes 1 - 3: Junior Squad</div>
+              <p style="font-size: 0.8rem; color: #64748b; margin: 0.25rem 0 0 0;">Coach Sarah Jenkins &bull; Freestyle Drills</p>
+            </div>
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border-left: 4px solid #059669;">
+              <div style="font-weight: 700; font-size: 0.9rem;">Lanes 4 - 8: Open Member Laps</div>
+              <p style="font-size: 0.8rem; color: #64748b; margin: 0.25rem 0 0 0;">Medium & Fast Interval Laps</p>
+            </div>
+            <div style="background: #f8fafc; padding: 1.25rem; border-radius: var(--radius-md); border-left: 4px solid #d97706;">
+              <div style="font-weight: 700; font-size: 0.9rem;">Lanes 9 - 10: Aqua Aerobics</div>
+              <p style="font-size: 0.8rem; color: #64748b; margin: 0.25rem 0 0 0;">Senior Conditioning Class (5:30 PM)</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 7: EMERGENCY ARENA LOCKDOWN & SENSOR OVERRIDE -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem; border-color: #ef4444; background: #fff5f5;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <span class="status-badge" style="background: #fee2e2; color: #991b1b; border: 1px solid #f87171;">Director Safety Authority</span>
+              <h3 style="margin-top: 0.5rem; margin-bottom: 0.25rem; color: #991b1b;">Emergency Arena Lockdown & Sensor Override</h3>
+              <p style="font-size: 0.875rem; color: #7f1d1d; margin: 0;">Authorized access to lock out courts for severe weather, electrical surges, or urgent repairs.</p>
+            </div>
+            <a href="404.html" class="btn btn-sm" style="background: #dc2626; color: #ffffff;">Initiate Lockdown Mode</a>
+          </div>
+        </section>
+
+        <!-- SECTION 8: SCHEDULE PUBLISHING & DISPATCH ACTIONS -->
+        <section class="sports-card" style="padding: 2rem;">
+          <h3 style="margin-bottom: 0.5rem;">Coaching Roster Management & Schedule Actions</h3>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">Publish weekly timetables, send SMS notices to parents, or export shift reports.</p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="404.html" class="btn btn-primary btn-sm">Publish Next Week's Schedule</a>
+            <a href="404.html" class="btn btn-secondary btn-sm">Send SMS Batch Schedule to Parents</a>
+            <a href="404.html" class="btn btn-accent btn-sm">Reassign Absent Coach Shift</a>
+            <a href="404.html" class="btn btn-outline btn-sm">Download Court Capacity Ledger</a>
+            <a href="404.html" class="btn btn-outline btn-sm">Audit Unclaimed Court Penalties</a>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

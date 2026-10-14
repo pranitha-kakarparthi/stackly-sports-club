@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coach Operations & Management Tools | Stackly Sports Club</title>
+  <meta name="description" content="Access coach operations, tournament draw seeding, pro-shop purchase orders, bulk messaging, and administrative tools at Stackly Sports Club.">
+  <link rel="icon" type="image/webp" href="assets/images/logoStackly.webp">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body style="background-color: #f1f5f9;">
+
+  <!-- LOADER -->
+  <div id="page-loader" role="status" aria-live="polite">
+    <div class="loader-content">
+      <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="loader-logo">
+      <div class="loader-spinner-wrapper"><div class="loader-spinner"></div></div>
+      <span class="loader-text">Loading Operations Console...</span>
+    </div>
+  </div>
+
+  <div class="dashboard-layout">
+    
+    <!-- DASHBOARD SIDEBAR -->
+    <aside class="dashboard-sidebar" aria-label="Coach Navigation">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link" aria-label="Return to Stackly Homepage">
+          <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="sidebar-brand-img">
+        </a>
+      </div>
+
+      <div class="sidebar-role-badge" id="dashRoleBadge">
+        Head Coach / Athletics Director
+      </div>
+
+      <ul class="sidebar-menu">
+        <li>
+          <a href="coach-dashboard.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            <span>Overview & KPIs</span>
+          </a>
+        </li>
+        <li>
+          <a href="coach-schedule.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Master Schedule</span>
+          </a>
+        </li>
+        <li>
+          <a href="coach-roster.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Squad Rosters</span>
+          </a>
+        </li>
+        <li>
+          <a href="coach-analytics.html" class="sidebar-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            <span>Facility Matrix</span>
+          </a>
+        </li>
+        <li>
+          <a href="coach-tools.html" class="sidebar-link active">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span>Operations & Tools</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <button type="button" onclick="logoutUser()" class="btn btn-outline-light btn-block btn-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Sign Out Session
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN DASHBOARD CONTENT AREA -->
+    <main class="dashboard-main">
+      
+      <!-- TOPBAR WITH DYNAMIC GREETING & COACH PROFILE -->
+      <header class="dashboard-topbar">
+        <div class="dashboard-greeting">
+          <h2 id="dashGreetingText">Good Afternoon, Coach!</h2>
+          <p>Stackly High Performance Complex &bull; Salem, Tamil Nadu &bull; Director Operations & Management Tools</p>
+        </div>
+
+        <div class="topbar-right">
+          <div class="user-profile-badge">
+            <div class="user-avatar-circle" id="dashUserAvatar">MV</div>
+            <div class="user-info-text">
+              <div class="user-name" id="dashUserName">Marcus Vance</div>
+              <div class="user-role" id="dashUserRole">Director of Athletics</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="dashboard-content-body">
+
+        <!-- SECTION 1: OPERATIONS HERO BANNER -->
+        <section class="sports-card" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: #ffffff; padding: 2rem; margin-bottom: 2rem; border-color: #475569;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+            <div>
+              <span class="section-tag" style="background: rgba(255,255,255,0.15); color: #60a5fa;">Command & Control</span>
+              <h3 style="color: #ffffff; font-size: 1.75rem; margin-top: 0.5rem; margin-bottom: 0.25rem;">Director Operations & Administrative Suite</h3>
+              <p style="color: #cbd5e1; font-size: 0.95rem; margin: 0;">Publish championship tournament draws, dispatch emergency broadcasts, audit pro-shop requisitions, and review staff coaches.</p>
+            </div>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="404.html" class="btn btn-primary btn-sm">Generate Tournament Draw</a>
+              <a href="404.html" class="btn btn-outline-light btn-sm">Export Financial Audit</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: EXECUTIVE KPIS -->
+        <section class="metrics-row">
+          <div class="metric-card">
+            <div class="metric-card-data">
+              <div class="metric-number">₹4.8L</div>
+              <div class="metric-title">Monthly Academy Revenue</div>
+            </div>
+            <div class="metric-card-icon green">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-data">
+              <div class="metric-number">99.4%</div>
+              <div class="metric-title">Staff Coach Punctuality</div>
+            </div>
+            <div class="metric-card-icon blue">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-data">
+              <div class="metric-number">4 PO Orders</div>
+              <div class="metric-title">Pending Equipment Requisitions</div>
+            </div>
+            <div class="metric-card-icon amber">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            </div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-card-data">
+              <div class="metric-number">Zero</div>
+              <div class="metric-title">Active Safety Non-Compliances</div>
+            </div>
+            <div class="metric-card-icon purple">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: TOURNAMENT BRACKET & DRAW SEEDING GENERATOR -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <div class="table-header-flex">
+            <div>
+              <h3>Tournament Bracket & Draw Seeding Generator</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Automated knock-out bracket publisher aligned with BWF and ITF draw protocols.</p>
+            </div>
+            <a href="404.html" class="btn btn-primary btn-sm">Publish Active Draw</a>
+          </div>
+
+          <div style="background: #f8fafc; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Salem Open Badminton Masters &bull; 64-Player Knockout</h4>
+              <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Top 8 seeds locked. Match courts assigned to Main Arena wooden floors 1 through 6.</p>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <a href="404.html" class="btn btn-outline btn-sm">Preview Interactive Bracket</a>
+              <a href="404.html" class="btn btn-secondary btn-sm">Export Seeding PDF</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 4: ATHLETE INCIDENT & INJURY REPORTING TOOL -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <div class="table-header-flex">
+            <div>
+              <h3>Incident, Injury & Medical Reporting Terminal</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Immediate notification logged to sports medicine desk and parent guardians.</p>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">File Official Report</a>
+          </div>
+
+          <form style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;">
+            <div class="form-group" style="margin: 0;">
+              <label class="form-label">Athlete Name</label>
+              <input type="text" class="form-control" value="Michael Ross" required>
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label class="form-label">Location / Arena</label>
+              <select class="form-control" required>
+                <option value="tennis" selected>Tennis Arena Plexicushion Court 2</option>
+                <option value="badminton">Badminton Wooden Court 4</option>
+                <option value="track">Olympic 400m Track</option>
+                <option value="gym">High-Tech Gym Free Weights</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin: 0;">
+              <label class="form-label">Severity Level</label>
+              <select class="form-control" required>
+                <option value="minor" selected>Minor (First Aid / Ice / Rest)</option>
+                <option value="moderate">Moderate (Physio Evaluation)</option>
+                <option value="severe">Severe (Hospital Transport)</option>
+              </select>
+            </div>
+            <div style="display: flex; align-items: flex-end;">
+              <a href="404.html" class="btn btn-primary btn-block">Log & Notify Medical Team</a>
+            </div>
+          </form>
+        </section>
+
+        <!-- SECTION 5: EQUIPMENT PURCHASE ORDERS & CONSUMABLES STOCK -->
+        <section class="dashboard-table-card">
+          <div class="table-header-flex">
+            <div>
+              <h3>Equipment Stock & Pro-Shop Purchase Order System</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Quarterly equipment requisitions authorized by Athletics Director.</p>
+            </div>
+            <a href="404.html" class="btn btn-primary btn-sm">Create New PO</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Item Code</th>
+                  <th>Consumable Description</th>
+                  <th>Current Stock</th>
+                  <th>Reorder Point</th>
+                  <th>Vendor Partner</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>#SKU-AS50</strong></td>
+                  <td>Yonex Aerosensa 50 Feather Shuttles</td>
+                  <td>180 Tubes</td>
+                  <td>50 Tubes</td>
+                  <td>Sunrise Singapore Pte</td>
+                  <td><span class="status-badge active">Stock Healthy</span></td>
+                </tr>
+                <tr>
+                  <td><strong>#SKU-CLAY-04</strong></td>
+                  <td>Dunlop Fort All-Court Tennis Balls</td>
+                  <td>42 Cans</td>
+                  <td>40 Cans</td>
+                  <td>Dunlop Sports India</td>
+                  <td><a href="404.html" class="btn btn-outline btn-sm">Issue Reorder PO</a></td>
+                </tr>
+                <tr>
+                  <td><strong>#SKU-MAG-BLK</strong></td>
+                  <td>Eleiko Pure Magnesium Gym Chalk</td>
+                  <td>65 kg</td>
+                  <td>20 kg</td>
+                  <td>Eleiko Sweden Dist.</td>
+                  <td><span class="status-badge active">Stock Healthy</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 6: BULK EMERGENCY BROADCAST CONSOLE -->
+        <section class="sports-card" style="padding: 2rem; margin-bottom: 2rem;">
+          <div class="table-header-flex">
+            <div>
+              <h3>Bulk SMS, WhatsApp & Email Broadcast Console</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Instant push notifications to entire academy groups, coaches, or parents.</p>
+            </div>
+            <a href="404.html" class="btn btn-secondary btn-sm">View Dispatch History</a>
+          </div>
+
+          <div style="background: #f8fafc; padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+              <div>
+                <label style="font-size: 0.85rem; font-weight: 700; color: #475569;">Target Batch / Group</label>
+                <select class="form-control" style="margin-top: 0.25rem;">
+                  <option value="all">All Enrolled Academy Athletes (384)</option>
+                  <option value="junior">Junior Badminton Squad & Parents (28)</option>
+                  <option value="senior">Pro State Ranking Squad (16)</option>
+                  <option value="coaches">All Staff Coaching Personnel (18)</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size: 0.85rem; font-weight: 700; color: #475569;">Delivery Channels</label>
+                <div style="margin-top: 0.5rem; display: flex; gap: 1rem; font-size: 0.875rem;">
+                  <label><input type="checkbox" checked> SMS Gateway</label>
+                  <label><input type="checkbox" checked> WhatsApp API</label>
+                  <label><input type="checkbox" checked> In-App Push</label>
+                </div>
+              </div>
+            </div>
+            <textarea class="form-control" rows="3" placeholder="Enter emergency bulletin or session scheduling announcement..."></textarea>
+            <div style="margin-top: 1rem; display: flex; justify-content: flex-end;">
+              <a href="404.html" class="btn btn-primary btn-sm">Broadcast Notice Now</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 7: STAFF COACH TIMESHEET & SHIFT APPROVAL -->
+        <section class="dashboard-table-card">
+          <div class="table-header-flex">
+            <div>
+              <h3>Staff Coach Shift Hours & Timesheet Verification</h3>
+              <p style="font-size: 0.85rem; color: #64748b; margin: 0;">Biometric attendance clock-in records for academy coaches.</p>
+            </div>
+            <a href="404.html" class="btn btn-outline btn-sm">Approve All Biometric Shifts</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="custom-table">
+              <thead>
+                <tr>
+                  <th>Coach Name</th>
+                  <th>Primary Discipline</th>
+                  <th>Weekly Clocked Hours</th>
+                  <th>Assigned Sessions</th>
+                  <th>Punctuality Rate</th>
+                  <th>Approval Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>David Chen</strong></td>
+                  <td>Badminton Academy</td>
+                  <td>36 hrs / 40 hrs Target</td>
+                  <td>12 Batches</td>
+                  <td>100% On-Time</td>
+                  <td><span class="status-badge active">Verified</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Sarah Jenkins</strong></td>
+                  <td>Aquatics & Swim Team</td>
+                  <td>34 hrs / 35 hrs Target</td>
+                  <td>10 Batches</td>
+                  <td>98% On-Time</td>
+                  <td><span class="status-badge active">Verified</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Elena Rodriguez</strong></td>
+                  <td>CrossFit & S&C Mentorship</td>
+                  <td>38 hrs / 40 hrs Target</td>
+                  <td>14 Batches</td>
+                  <td>100% On-Time</td>
+                  <td><span class="status-badge active">Verified</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 8: MASTER SECURITY & SYSTEM CONTROLS -->
+        <section class="sports-card" style="padding: 2rem;">
+          <h3 style="margin-bottom: 0.5rem;">Master Campus Controls & Administrative Actions</h3>
+          <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1.5rem;">Execute authorized global operations across the Stackly sports club ecosystem.</p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="404.html" class="btn btn-primary btn-sm">Audit Turnstile RFID Card Keys</a>
+            <a href="404.html" class="btn btn-secondary btn-sm">Configure Floodlight Master Timer</a>
+            <a href="404.html" class="btn btn-accent btn-sm">Issue Disciplinary Warning</a>
+            <a href="404.html" class="btn btn-outline btn-sm">Export Financial P&L Statement</a>
+            <a href="404.html" class="btn btn-outline btn-sm">Backup Cloud Biometrics Database</a>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const currentUser = JSON.parse(currentUserRaw);
   const currentPath = window.location.pathname.toLowerCase();
-  const isCoachPage = currentPath.includes('coach-dashboard');
+  const isCoachPage = currentPath.includes('coach-');
 
   // Align active role with dedicated page
   const activeRole = isCoachPage ? 'coach' : 'member';
@@ -77,18 +77,21 @@ function initTopbar(user, role) {
 }
 
 function initSidebarTabs() {
-  const links = document.querySelectorAll('.sidebar-link[data-target]');
+  const links = document.querySelectorAll('.sidebar-link');
   links.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      links.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href.startsWith('#')) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
 
-      const targetKey = link.getAttribute('data-target');
-      const targetElement = document.getElementById(targetKey) || document.querySelector(`[data-target="${targetKey}"]`);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
+        const targetKey = link.getAttribute('data-target');
+        const targetElement = document.getElementById(targetKey) || document.querySelector(`[data-target="${targetKey}"]`);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }
   });
 }
