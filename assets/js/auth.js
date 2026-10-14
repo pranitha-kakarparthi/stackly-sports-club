@@ -143,7 +143,7 @@ function initSignIn(form) {
       return;
     }
 
-    // Authenticate or allow demo login with entered email + chosen role
+    // Authenticate or initialize session with entered email + chosen role
     const users = JSON.parse(localStorage.getItem('users') || '[]');
     const email = emailInput.value.trim().toLowerCase();
     const existing = users.find(u => u.email.toLowerCase() === email);
@@ -161,8 +161,8 @@ function initSignIn(form) {
     localStorage.setItem('currentUser', JSON.stringify(userProfile));
     localStorage.setItem('role', roleSelect.value);
 
-    // Redirect to dashboard
-    window.location.href = 'dashboard.html';
+    // Redirect to individual role dashboard
+    window.location.href = roleSelect.value === 'coach' ? 'coach-dashboard.html' : 'member-dashboard.html';
   });
 }
 

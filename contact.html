@@ -61,6 +61,7 @@
 
   <!-- SECTION 1: HERO -->
   <section class="page-hero">
+    <div class="hero-bg-overlay" style="background-image: url('assets/images/facility-tennis-arena.webp');" aria-hidden="true"></div>
     <div class="container">
       <div class="breadcrumbs">
         <a href="index.html">Home</a>
@@ -129,7 +130,7 @@
           <div style="margin-bottom: 1.75rem;">
             <span class="section-tag">Direct Inquiry</span>
             <h3 style="font-size: 1.6rem; margin-top: 0.5rem;">Send A Message To Admissions</h3>
-            <p style="font-size: 0.925rem;">Fill out the form below. For demonstration purposes, sample default values are provided.</p>
+            <p style="font-size: 0.925rem;">Fill out the form below to connect directly with our athletics advisory desk.</p>
           </div>
 
           <!-- Success Alert -->
@@ -144,7 +145,7 @@
                 <span>Full Name <span class="required-badge">*</span></span>
                 <span class="optional-badge">Alphabets Only</span>
               </label>
-              <input type="text" id="contactName" class="form-control" data-alphabets-only="true" value="Kavita Ramanathan" required placeholder="Enter full name">
+              <input type="text" id="contactName" class="form-control" data-alphabets-only="true" value="" required placeholder="Enter full name">
               <div class="invalid-feedback">Please enter a valid name containing only alphabets (min 2 characters).</div>
             </div>
 
@@ -153,7 +154,7 @@
               <label for="contactEmail" class="form-label">
                 <span>Email Address <span class="required-badge">*</span></span>
               </label>
-              <input type="email" id="contactEmail" class="form-control" value="kavita.athlete@example.com" required placeholder="name@example.com">
+              <input type="email" id="contactEmail" class="form-control" value="" required placeholder="name@example.com">
               <div class="invalid-feedback">Please provide a valid email address.</div>
             </div>
 
@@ -171,7 +172,7 @@
                   <option value="+971">UAE +971</option>
                   <option value="+65">SG +65</option>
                 </select>
-                <input type="tel" id="contactPhone" class="form-control" data-exact-phone="true" value="9876543210" maxlength="10" required placeholder="10-digit number">
+                <input type="tel" id="contactPhone" class="form-control" data-exact-phone="true" value="" maxlength="10" required placeholder="10-digit number">
               </div>
               <div id="contactPhoneFeedback" class="invalid-feedback">Please enter a valid 10-digit mobile number.</div>
             </div>
@@ -182,8 +183,8 @@
                 <span>Subject / Inquiry Reason <span class="required-badge">*</span></span>
               </label>
               <select id="contactSubject" class="form-control" required>
-                <option value="">Select an inquiry topic...</option>
-                <option value="academy" selected>Badminton / Tennis Academy Enrollment</option>
+                <option value="" selected>Select an inquiry topic...</option>
+                <option value="academy">Badminton / Tennis Academy Enrollment</option>
                 <option value="tour">Schedule In-Person Campus & Arena Tour</option>
                 <option value="membership">Membership Tiers & Corporate Packages</option>
                 <option value="tournament">Tournament Registration & Matchmaking</option>
@@ -198,7 +199,7 @@
                 <span>Message or Special Request</span>
                 <span class="optional-badge">Optional</span>
               </label>
-              <textarea id="contactMessage" class="form-control" rows="4" maxlength="500" placeholder="Let us know any specific sports interests or preferred visiting times...">I would like to schedule a tour of the BWF wooden badminton courts and inquire about junior academy schedules for my 11-year-old.</textarea>
+              <textarea id="contactMessage" class="form-control" rows="4" maxlength="500" placeholder="Let us know any specific sports interests or preferred visiting times..."></textarea>
               <div id="charCount" class="char-counter">0 / 500 characters</div>
             </div>
 
@@ -337,7 +338,7 @@
             <p>Official Yonex, Wilson, and Speedo gear pro-shop located on the ground floor with instant racket restringing services.</p>
             <div class="feature-pills">
               <span class="pill-item">Babolat Stringer</span>
-              <span class="pill-item">Demo Rackets</span>
+              <span class="pill-item">Performance Rackets</span>
             </div>
             <a href="404.html" class="btn btn-outline btn-sm">Pro-Shop Catalog</a>
           </div>

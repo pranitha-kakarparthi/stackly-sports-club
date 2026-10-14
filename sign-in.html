@@ -24,6 +24,7 @@
     
     <!-- BRAND / HERO SHOWCASE SIDE -->
     <div class="auth-brand-side">
+      <div class="hero-bg-overlay" style="background-image: url('assets/images/facility-badminton-court.webp');" aria-hidden="true"></div>
       <div class="auth-brand-header">
         <a href="index.html" class="auth-logo-link" aria-label="Return to Homepage">
           <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo">
@@ -68,11 +69,6 @@
           <p>Enter your credentials to enter your customized athletic dashboard.</p>
         </div>
 
-        <!-- Demo Credentials Notification Box -->
-        <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: var(--radius-md); padding: 0.85rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #1e40af;">
-          <strong>Quick Demo Login:</strong> Select your role and click Sign In, or enter any valid email with 6+ character password.
-        </div>
-
         <!-- Social Login Section (All Redirect to 404 as required) -->
         <div class="social-auth-grid">
           <a href="404.html" class="btn-social" aria-label="Sign in with Google">
@@ -102,8 +98,8 @@
               <span class="optional-badge">Select Role</span>
             </label>
             <select id="loginRole" class="form-control" required>
-              <option value="">Choose role...</option>
-              <option value="member" selected>Club Athlete / Member</option>
+              <option value="" selected>Choose role...</option>
+              <option value="member">Club Athlete / Member</option>
               <option value="coach">Head Coach / Admin</option>
             </select>
             <div class="invalid-feedback">Please select your login role.</div>
@@ -114,7 +110,7 @@
             <label for="loginEmail" class="form-label">
               <span>Email Address <span class="required-badge">*</span></span>
             </label>
-            <input type="email" id="loginEmail" class="form-control" value="athlete@stackly.com" required placeholder="athlete@stackly.com">
+            <input type="email" id="loginEmail" class="form-control" value="" required placeholder="name@stackly.com">
             <div class="invalid-feedback">Please enter a valid email address.</div>
           </div>
 
@@ -125,7 +121,7 @@
               <a href="404.html" style="font-size: 0.8rem; font-weight: 600; color: #1d4ed8;">Forgot Password?</a>
             </div>
             <div class="input-wrapper">
-              <input type="password" id="loginPassword" class="form-control" value="Stackly@2026" required placeholder="Enter your password">
+              <input type="password" id="loginPassword" class="form-control" value="" required placeholder="Enter your password">
               <button type="button" class="input-password-toggle" data-target="loginPassword" aria-label="Toggle password visibility">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>

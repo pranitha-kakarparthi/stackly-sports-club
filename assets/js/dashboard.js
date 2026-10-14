@@ -1,7 +1,6 @@
 /**
- * STACKLY SPORTS CLUB - ROLE-BASED DASHBOARD ENGINE
- * Supports 2 Distinct Roles: 'member' (Athlete) and 'coach' (Coach / Admin)
- * Live Role Switcher, Session Persistence, KPI Metrics, Tables & Schedules
+ * STACKLY SPORTS CLUB - DEDICATED INDIVIDUAL DASHBOARDS ENGINE
+ * Manages Dedicated Member & Coach Portals | Session Verification | Tab Navigation
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,29 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const currentUser = JSON.parse(currentUserRaw);
-  let activeRole = localStorage.getItem('role') || currentUser.role || 'member';
+  const currentPath = window.location.pathname.toLowerCase();
+  const isCoachPage = currentPath.includes('coach-dashboard');
+
+  // Align active role with dedicated page
+  const activeRole = isCoachPage ? 'coach' : 'member';
+  localStorage.setItem('role', activeRole);
 
   // 2. Initialize Topbar Details
   initTopbar(currentUser, activeRole);
 
-  // 3. Render Dashboard View for Active Role
-  renderDashboard(currentUser, activeRole);
-
-  // 4. Role Switcher Listener
-  const roleSelect = document.getElementById('roleSwitcherSelect');
-  if (roleSelect) {
-    roleSelect.value = activeRole;
-    roleSelect.addEventListener('change', (e) => {
-      activeRole = e.target.value;
-      localStorage.setItem('role', activeRole);
-      currentUser.role = activeRole;
-      localStorage.setItem('currentUser', JSON.stringify(currentUser));
-      initTopbar(currentUser, activeRole);
-      renderDashboard(currentUser, activeRole);
-    });
-  }
-
-  // 5. Sidebar Navigation tab switching
+  // 3. Sidebar Navigation Tab Scrolling
   initSidebarTabs();
 });
 
@@ -53,44 +40,40 @@ function initTopbar(user, role) {
   const userRoleEl = document.getElementById('dashUserRole');
   const userAvatarEl = document.getElementById('dashUserAvatar');
 
-  const fullName = `${user.firstName || 'Athlete'} ${user.lastName || 'Member'}`;
   const greeting = getGreeting();
+  const isCoach = role === 'coach';
+
+  // Determine display name
+  let firstName = user.firstName;
+  let lastName = user.lastName;
+
+  // If user role from login matched the page, use user's credentials, otherwise default to role profile
+  if (user.role === role) {
+    firstName = user.firstName || (isCoach ? 'Marcus' : 'Arjun');
+    lastName = user.lastName || (isCoach ? 'Vance' : 'Patel');
+  } else {
+    firstName = isCoach ? 'Marcus' : 'Arjun';
+    lastName = isCoach ? 'Vance' : 'Patel';
+  }
+
+  const fullName = `${firstName} ${lastName}`;
 
   if (greetingEl) {
-    greetingEl.textContent = `${greeting}, ${user.firstName || 'Champion'}!`;
+    greetingEl.textContent = `${greeting}, ${firstName}!`;
   }
   if (roleBadgeEl) {
-    roleBadgeEl.textContent = role === 'coach' ? 'Head Coach / Admin' : 'Club Athlete / Member';
+    roleBadgeEl.textContent = isCoach ? 'Head Coach / Athletics Director' : 'Club Athlete / Member';
   }
   if (userNameEl) {
     userNameEl.textContent = fullName;
   }
   if (userRoleEl) {
-    userRoleEl.textContent = role === 'coach' ? 'Director of Athletics' : 'Pro Tier Athlete';
+    userRoleEl.textContent = isCoach ? 'Director of Athletics' : 'Pro Tier Athlete';
   }
   if (userAvatarEl) {
-    const initials = (user.firstName ? user.firstName[0] : 'S') + (user.lastName ? user.lastName[0] : 'C');
+    const initials = (firstName ? firstName[0] : 'S') + (lastName ? lastName[0] : 'C');
     userAvatarEl.textContent = initials.toUpperCase();
   }
-}
-
-function renderDashboard(user, role) {
-  const memberContainer = document.getElementById('memberDashboardView');
-  const coachContainer = document.getElementById('coachDashboardView');
-
-  if (role === 'coach') {
-    if (memberContainer) memberContainer.style.display = 'none';
-    if (coachContainer) coachContainer.style.display = 'block';
-  } else {
-    if (coachContainer) coachContainer.style.display = 'none';
-    if (memberContainer) memberContainer.style.display = 'block';
-  }
-
-  // Reset active sidebar link to overview on role switch
-  const links = document.querySelectorAll('.sidebar-link[data-target]');
-  links.forEach(l => l.classList.remove('active'));
-  const overviewLink = document.querySelector('.sidebar-link[data-target="overview"]');
-  if (overviewLink) overviewLink.classList.add('active');
 }
 
 function initSidebarTabs() {
@@ -102,13 +85,10 @@ function initSidebarTabs() {
       link.classList.add('active');
 
       const targetKey = link.getAttribute('data-target');
-      const activeRole = localStorage.getItem('role') || 'member';
-      // Look for role-scoped ID first (e.g. member-overview or coach-overview)
-      const targetElement = document.getElementById(`${activeRole}-${targetKey}`) || document.getElementById(targetKey);
+      const targetElement = document.getElementById(targetKey) || document.querySelector(`[data-target="${targetKey}"]`);
       if (targetElement) {
         targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
 }
-
