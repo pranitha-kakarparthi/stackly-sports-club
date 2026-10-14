@@ -350,3 +350,4 @@ function logoutUser() {
   window.location.href = 'sign-in.html';
 }
 window.logoutUser = logoutUser;
+

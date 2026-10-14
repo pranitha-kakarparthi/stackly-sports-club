@@ -85,6 +85,12 @@ function renderDashboard(user, role) {
     if (coachContainer) coachContainer.style.display = 'none';
     if (memberContainer) memberContainer.style.display = 'block';
   }
+
+  // Reset active sidebar link to overview on role switch
+  const links = document.querySelectorAll('.sidebar-link[data-target]');
+  links.forEach(l => l.classList.remove('active'));
+  const overviewLink = document.querySelector('.sidebar-link[data-target="overview"]');
+  if (overviewLink) overviewLink.classList.add('active');
 }
 
 function initSidebarTabs() {
@@ -95,11 +101,14 @@ function initSidebarTabs() {
       links.forEach(l => l.classList.remove('active'));
       link.classList.add('active');
 
-      const targetId = link.getAttribute('data-target');
-      const targetElement = document.getElementById(targetId);
+      const targetKey = link.getAttribute('data-target');
+      const activeRole = localStorage.getItem('role') || 'member';
+      // Look for role-scoped ID first (e.g. member-overview or coach-overview)
+      const targetElement = document.getElementById(`${activeRole}-${targetKey}`) || document.getElementById(targetKey);
       if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
 }
+
