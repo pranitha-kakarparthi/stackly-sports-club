@@ -810,7 +810,7 @@ img {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(7, 11, 18, 0.78) 0%, rgba(7, 11, 18, 0.48) 50%, rgba(7, 11, 18, 0.18) 100%);
+  background: linear-gradient(90deg, rgba(7, 11, 18, 0.84) 0%, rgba(7, 11, 18, 0.54) 50%, rgba(7, 11, 18, 0.20) 100%);
   pointer-events: none;
   z-index: 2;
 }
@@ -1087,8 +1087,8 @@ img {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  opacity: 0.46;
-  filter: saturate(1.3) brightness(0.96) contrast(1.08);
+  opacity: 0.70;
+  filter: saturate(1.32) brightness(0.96) contrast(1.12);
   transform-origin: center center;
   animation: heroCinemaKenBurns 18s ease-in-out infinite alternate;
   pointer-events: none;
@@ -1100,41 +1100,42 @@ img {
 /* Precise Background Alignment in Primary Hero Section */
 .hero-section .hero-bg-overlay {
   background-position: 70% center;
-  opacity: 0.50;
+  opacity: 0.75;
 }
 
 /* Precise Background Alignment in Inner Page Hero Sections */
 .page-hero .hero-bg-overlay {
   background-position: center 36%;
-  opacity: 0.46;
+  opacity: 0.70;
 }
 
 /* Precise Background Alignment in Auth Sidebars */
 .auth-brand-side .hero-bg-overlay {
   background-position: center center;
-  opacity: 0.45;
+  opacity: 0.65;
 }
 
 /* Precise Background Alignment in 404 Error Screen */
 .error-page-wrapper .hero-bg-overlay {
   background-position: center center;
-  opacity: 0.42;
+  opacity: 0.62;
 }
 
 /* Precise Background Alignment in Dashboard Hero Banners */
 .dashboard-hero-card .hero-bg-overlay,
 .sports-card .hero-bg-overlay {
   background-position: center center;
-  opacity: 0.35;
+  opacity: 0.58;
 }
 
 /* Hover Accentuation across all Hero Sections */
 .hero-section:hover .hero-bg-overlay,
 .page-hero:hover .hero-bg-overlay,
 .auth-brand-side:hover .hero-bg-overlay,
-.sports-card:hover .hero-bg-overlay {
-  opacity: 0.62;
-  filter: saturate(1.45) brightness(1.02) contrast(1.15);
+.sports-card:hover .hero-bg-overlay,
+.error-page-wrapper:hover .hero-bg-overlay {
+  opacity: 0.85;
+  filter: saturate(1.45) brightness(1.04) contrast(1.18);
 }
 
 @keyframes heroCinemaKenBurns {
@@ -1290,6 +1291,16 @@ img {
   transition: transform var(--ease-spring), box-shadow var(--ease-normal), border-color var(--ease-normal);
   display: flex;
   flex-direction: column;
+}
+
+.sports-card > *:not(.hero-bg-overlay) {
+  position: relative;
+  z-index: 2;
+}
+
+.sports-card > img {
+  width: 100%;
+  display: block;
 }
 
 .sports-card:hover {
@@ -2035,6 +2046,16 @@ svg {
   height: 100%;
   background: radial-gradient(circle at 80% 30%, rgba(37, 99, 235, 0.3) 0%, transparent 60%);
   pointer-events: none;
+  z-index: 1;
+}
+
+.auth-brand-side::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 11, 18, 0.72) 0%, rgba(7, 11, 18, 0.58) 50%, rgba(7, 11, 18, 0.82) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .auth-brand-header {
@@ -3036,6 +3057,27 @@ svg {
   .dashboard-content-body {
     padding: 1rem 0.75rem;
   }
+
+  #member-overview div[style*="justify-content: space-between"],
+  #coach-overview div[style*="justify-content: space-between"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1.25rem !important;
+  }
+
+  #member-overview div[style*="display: flex; gap: 1rem;"],
+  #coach-overview div[style*="display: flex; gap: 1rem;"] {
+    width: 100% !important;
+    flex-direction: column !important;
+    gap: 0.65rem !important;
+  }
+
+  #member-overview div[style*="display: flex; gap: 1rem;"] .btn,
+  #coach-overview div[style*="display: flex; gap: 1rem;"] .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
 }
 
 /* ==========================================================================
@@ -3655,6 +3697,9 @@ body.sticky-404-page .site-footer {
     padding: 4rem 0 4.5rem;
     text-align: center;
   }
+  .hero-section::after {
+    background: linear-gradient(180deg, rgba(7, 11, 18, 0.88) 0%, rgba(7, 11, 18, 0.65) 60%, rgba(7, 11, 18, 0.32) 100%);
+  }
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 2.75rem;
@@ -4205,6 +4250,23 @@ body.sticky-404-page .site-footer {
   .auth-brand-content h2,
   .auth-form-header h2 {
     font-size: 1.3rem !important;
+  }
+  .dashboard-topbar {
+    padding: 0.5rem 0.65rem !important;
+    gap: 0.5rem !important;
+  }
+  .dashboard-mobile-toggle {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+  }
+  .user-avatar-circle {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 0.85rem !important;
+  }
+  .dashboard-greeting h2 {
+    font-size: 0.925rem !important;
   }
 }
 
