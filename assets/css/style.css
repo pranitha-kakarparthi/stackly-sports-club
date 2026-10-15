@@ -3154,13 +3154,431 @@ body.sticky-404-page .error-page-wrapper {
   color: #ffffff;
 }
 
+/* ==========================================================================
+   COMPREHENSIVE RESPONSIVE CONTENT REARRANGEMENT & MOBILE ARCHITECTURE
+   ========================================================================== */
+
+/* --- TABLETS & MEDIUM SCREENS (<= 991px) --- */
 @media (max-width: 991px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  /* Navbar & Header */
+  .navbar-container {
+    height: 74px;
+    padding: 0 1.25rem;
+  }
+  .brand-logo-img {
+    height: 38px;
+  }
+
+  /* Hero Section Restacking & Centering */
+  .hero-section {
+    padding: 4rem 0 4.5rem;
+    text-align: center;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+    text-align: center;
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-badge {
+    margin: 0 auto 1.25rem;
+  }
+  .hero-title {
+    font-size: clamp(2.1rem, 6.5vw, 2.85rem);
+    margin-bottom: 1rem;
+  }
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.05rem;
+  }
+  .hero-actions {
+    justify-content: center;
+    width: 100%;
+  }
+  .hero-metrics {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 1.75rem;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    gap: 1.25rem;
+  }
+  .hero-visual {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .hero-img-card img {
+    height: 340px;
+  }
+  .hero-floating-card {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin: -2.5rem 1rem 0;
+    max-width: calc(100% - 2rem);
+    z-index: 5;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Two-column Content Sections Using .hero-grid */
+  .py-section .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .py-section .hero-grid .sports-card img {
+    height: 280px;
+  }
+
+  /* Inner Page Hero Sections */
+  .page-hero {
+    padding: 4.25rem 0 4.5rem;
+  }
+  .page-hero h1 {
+    font-size: clamp(2rem, 5.5vw, 2.5rem);
+  }
+
+  /* Card Grids */
+  .card-grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.75rem;
+  }
+  .card-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
 }
 
+/* --- MOBILE PHONES & PHABLETS (<= 768px) --- */
+@media (max-width: 768px) {
+  /* Section Spacing */
+  .py-section {
+    padding: 3.5rem 0;
+  }
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+  .section-header h2 {
+    font-size: 1.85rem;
+  }
+  .section-tag {
+    font-size: 0.775rem;
+  }
+
+  /* General Card Grids to 1 Column */
+  .card-grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .card-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .card-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* CTA Banner Reordering & Restacking */
+  .cta-banner {
+    padding: 3rem 1.75rem;
+    text-align: center;
+  }
+  .cta-content {
+    margin: 0 auto;
+  }
+  .cta-content h2 {
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
+  }
+  .cta-actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Pricing Cards in Membership */
+  .pricing-card.featured {
+    transform: none !important;
+    margin: 0;
+  }
+
+  /* Tables: Ensure Smooth Touch Scrolling on Touchscreens */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: var(--radius-md);
+  }
+  .custom-table {
+    min-width: 580px;
+  }
+}
+
+/* --- SMALL MOBILE PHONES (<= 600px) --- */
 @media (max-width: 600px) {
-  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .footer-bottom { flex-direction: column; text-align: center; }
+  /* Containers */
+  .container {
+    padding: 0 1rem;
+  }
+  .navbar-container {
+    height: 68px;
+    padding: 0 1rem;
+  }
+  .brand-logo-img {
+    height: 34px;
+  }
+
+  /* Sections */
+  .py-section {
+    padding: 3rem 0;
+  }
+
+  /* All Inline 2-Column Mini Grids Stack Cleanly */
+  div[style*="grid-template-columns: 1fr 1fr"],
+  div[style*="grid-template-columns: 1fr 1fr;"] {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Cards with Large Inline Padding Scale Down */
+  .sports-card[style*="padding: 2.5rem"],
+  .sports-card[style*="padding: 2rem"],
+  .sports-card[style*="padding: 3.5rem"] {
+    padding: 1.25rem !important;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 3rem 0 3.25rem;
+  }
+  .hero-title {
+    font-size: clamp(1.85rem, 8vw, 2.35rem);
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-metrics {
+    gap: 0.5rem;
+    padding-top: 1.25rem;
+  }
+  .metric-item h4 {
+    font-size: 1.4rem;
+  }
+  .metric-item p {
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-img-card img {
+    height: 250px;
+  }
+
+  /* Page Sub-Hero */
+  .page-hero {
+    padding: 3rem 0 3.25rem;
+  }
+  .page-hero h1 {
+    font-size: 1.85rem;
+  }
+  .page-hero p {
+    font-size: 0.925rem;
+  }
+
+  /* Cards */
+  .card-grid-4 {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .sports-card-img {
+    height: 190px;
+  }
+  .sports-card-body {
+    padding: 1.15rem;
+  }
+
+  /* CTA Banner */
+  .cta-banner {
+    padding: 2.25rem 1.25rem;
+    clip-path: none;
+    border-radius: var(--radius-lg);
+  }
+  .cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cta-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Footer Centering & Stacked Alignment */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-brand p {
+    margin: 1rem auto 1.25rem;
+    max-width: 100%;
+  }
+  .social-links-list {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-col h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .footer-links {
+    align-items: center;
+  }
+  .footer-links li a:hover {
+    padding-left: 0;
+    color: #60a5fa;
+  }
+  .footer-contact-list {
+    align-items: center;
+    width: 100%;
+  }
+  .footer-contact-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap: 0.35rem;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding-top: 1.5rem;
+  }
+  .footer-legal-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.85rem 1.25rem;
+  }
+
+  /* Sticky 404 Page on Small Mobile */
+  body.sticky-404-page {
+    height: auto;
+    max-height: none;
+    overflow-y: auto;
+  }
+  body.sticky-404-page .error-page-wrapper {
+    min-height: calc(100vh - 68px);
+    height: auto;
+    padding: 2.25rem 1rem;
+  }
+  .error-content-card {
+    padding: 2.25rem 1.25rem;
+  }
+  .error-code-graphic {
+    font-size: clamp(4.5rem, 16vw, 6.5rem);
+  }
+  .error-content-card h1 {
+    font-size: 1.75rem;
+  }
+  .error-content-card p {
+    font-size: 0.95rem;
+    margin-bottom: 1.75rem;
+  }
+  .error-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+  .error-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --- EXTRA NARROW SCREENS (<= 480px) --- */
+@media (max-width: 480px) {
+  /* Social Login Buttons in Auth Pages: Stack cleanly */
+  .social-auth-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+  .btn-social {
+    padding: 0.75rem;
+    justify-content: center;
+  }
+
+  /* Auth Form Headers & Side */
+  .auth-form-side {
+    padding: 2rem 1rem;
+  }
+  .auth-brand-side {
+    padding: 2rem 1rem;
+  }
+  .auth-form-header h2 {
+    font-size: 1.5rem;
+  }
+  .auth-brand-content h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Dashboard Topbar & Mobile Details */
+  .dashboard-topbar {
+    padding: 0.75rem 0.85rem;
+  }
+  .dashboard-greeting h2 {
+    font-size: 1.05rem;
+  }
+  .user-info-text {
+    display: none;
+  }
+  .dashboard-content-body {
+    padding: 1rem 0.75rem;
+  }
+  .metrics-row {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+  .metric-card {
+    padding: 1rem;
+  }
+
+  /* Dashboard Quick Actions Center (Section 8) */
+  .sports-card div[style*="display: flex; gap: 1rem; flex-wrap: wrap;"] {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+  .sports-card div[style*="display: flex; gap: 1rem; flex-wrap: wrap;"] .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 /* ==========================================================================
