@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 8. Contact Form Character Counter & Alpine-like Helpers
   initContactFormHelpers();
+
+  // 9. Back To Top Floating Action Button
+  initBackToTop();
 });
 
 /* ==========================================================================
@@ -284,5 +287,52 @@ function initContactFormHelpers() {
       input.value = input.value.replace(/\D/g, '').slice(0, 10);
     });
   });
+}
+
+/* ==========================================================================
+   9. BACK TO TOP BUTTON
+   ========================================================================== */
+function initBackToTop() {
+  let btn = document.getElementById('backToTopBtn');
+  if (!btn) {
+    btn = document.createElement('button');
+    btn.id = 'backToTopBtn';
+    btn.className = 'back-to-top-btn';
+    btn.setAttribute('type', 'button');
+    btn.setAttribute('aria-label', 'Back to top of page');
+    btn.setAttribute('title', 'Back to top');
+    btn.innerHTML = `
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    `;
+    document.body.appendChild(btn);
+  }
+
+  const dashMain = document.querySelector('.dashboard-main');
+
+  const checkScroll = () => {
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    const dashScroll = dashMain ? dashMain.scrollTop : 0;
+    if (scrollY > 280 || dashScroll > 280) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  };
+
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  if (dashMain) {
+    dashMain.addEventListener('scroll', checkScroll, { passive: true });
+  }
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (dashMain) {
+      dashMain.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  checkScroll();
 }
 

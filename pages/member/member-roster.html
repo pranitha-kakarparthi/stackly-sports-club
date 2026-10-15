@@ -112,7 +112,9 @@
       <div class="dashboard-content-body">
 
         <!-- SECTION 1: DIRECTIVES OVERVIEW BANNER -->
-        <section class="sports-card" style="background: linear-gradient(135deg, #090d16 0%, #064e3b 100%); color: #ffffff; padding: 2rem; margin-bottom: 2rem; border-color: #047857;">
+        <section class="sports-card" style="background: linear-gradient(135deg, #090d16 0%, #064e3b 100%); color: #ffffff; padding: 2rem; margin-bottom: 2rem; border-color: #047857;; position: relative;; overflow: hidden;">
+          <div class="hero-bg-overlay" style="background-image: url('../../assets/images/facility-olympic-pool.webp'); opacity: 0.22;" aria-hidden="true"></div>
+          <div style="position: relative; z-index: 1;">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
             <div>
               <span class="section-tag" style="background: rgba(255,255,255,0.12); color: #34d399;">Academy Mentorship</span>
@@ -123,6 +125,8 @@
               <a href="../../404.html" class="btn btn-accent btn-sm">Message Head Coach</a>
               <a href="../../404.html" class="btn btn-outline-light btn-sm">Enter Next Tournament</a>
             </div>
+          </div>
+        
           </div>
         </section>
 
@@ -393,6 +397,13 @@
   <script src="../../assets/js/main.js"></script>
   <script src="../../assets/js/auth.js"></script>
   <script src="../../assets/js/dashboard.js"></script>
+  <!-- BACK TO TOP BUTTON -->
+  <button type="button" id="backToTopBtn" class="back-to-top-btn" aria-label="Back to top of page" title="Back to top">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
 </body>
 </html>
 

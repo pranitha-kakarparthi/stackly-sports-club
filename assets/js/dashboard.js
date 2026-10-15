@@ -36,9 +36,18 @@ function initSidebarCollapse() {
   const sidebar = document.querySelector('.dashboard-sidebar');
   if (!sidebar) return;
 
-  // Restore saved collapse state on desktop
+  // 1. Ensure backdrop element exists for mobile drawer
+  let backdrop = document.querySelector('.dashboard-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'dashboard-backdrop';
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(backdrop);
+  }
+
+  // 2. Desktop Collapse State Restoration (> 991px)
   const isCollapsed = localStorage.getItem('stackly_sidebar_collapsed') === 'true';
-  if (isCollapsed && window.innerWidth > 900) {
+  if (isCollapsed && window.innerWidth > 991) {
     sidebar.classList.add('collapsed');
     if (collapseBtn) {
       collapseBtn.setAttribute('aria-expanded', 'false');
@@ -46,27 +55,49 @@ function initSidebarCollapse() {
     }
   }
 
+  // 3. Mobile Drawer Controls (<= 991px)
   let savedDashScrollY = 0;
-  const toggleMobileSidebar = () => {
-    const isExpanded = sidebar.classList.toggle('mobile-expanded');
-    if (isExpanded) {
-      savedDashScrollY = window.pageYOffset || document.documentElement.scrollTop;
-      document.body.style.top = `-${savedDashScrollY}px`;
-      document.body.classList.add('nav-open');
-    } else {
-      document.body.classList.remove('nav-open');
-      const prevTop = parseInt(document.body.style.top || '0', 10);
-      document.body.style.top = '';
-      window.scrollTo(0, -prevTop || savedDashScrollY);
+
+  const openMobileDrawer = () => {
+    savedDashScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    sidebar.classList.add('mobile-open', 'mobile-expanded');
+    document.body.style.top = `-${savedDashScrollY}px`;
+    document.body.classList.add('dash-sidebar-open', 'nav-open');
+    if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
+    if (collapseBtn) collapseBtn.setAttribute('title', 'Close navigation menu');
+  };
+
+  const closeMobileDrawer = () => {
+    sidebar.classList.remove('mobile-open', 'mobile-expanded');
+    document.body.classList.remove('dash-sidebar-open', 'nav-open');
+    const prevTop = parseInt(document.body.style.top || '0', 10);
+    document.body.style.top = '';
+    window.scrollTo(0, -prevTop || savedDashScrollY);
+    if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+    if (collapseBtn) {
+      const isDeskCollapsed = sidebar.classList.contains('collapsed');
+      collapseBtn.setAttribute('title', isDeskCollapsed ? 'Expand sidebar' : 'Collapse sidebar');
     }
   };
 
+  // 4. Mobile Toggle Button (Topbar)
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (sidebar.classList.contains('mobile-open')) {
+        closeMobileDrawer();
+      } else {
+        openMobileDrawer();
+      }
+    });
+  }
+
+  // 5. Sidebar Collapse / Close Button
   if (collapseBtn) {
     collapseBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const isMobile = window.innerWidth <= 900;
-      if (isMobile) {
-        toggleMobileSidebar();
+      if (window.innerWidth <= 991) {
+        closeMobileDrawer();
       } else {
         const willCollapse = !sidebar.classList.contains('collapsed');
         sidebar.classList.toggle('collapsed', willCollapse);
@@ -77,18 +108,30 @@ function initSidebarCollapse() {
     });
   }
 
-  if (mobileToggle) {
-    mobileToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleMobileSidebar();
-    });
-  }
+  // 6. Backdrop click to close drawer
+  backdrop.addEventListener('click', () => {
+    closeMobileDrawer();
+  });
 
-  // Close mobile sidebar when clicking a link or outside
+  // 7. Close mobile drawer when clicking any link inside the sidebar
   sidebar.addEventListener('click', (e) => {
-    const link = e.target.closest('a, button:not(#sidebarCollapseBtn)');
-    if (link && window.innerWidth <= 900 && sidebar.classList.contains('mobile-expanded')) {
-      toggleMobileSidebar();
+    const link = e.target.closest('.sidebar-link, .sidebar-footer .btn, .brand-link');
+    if (link && window.innerWidth <= 991) {
+      closeMobileDrawer();
+    }
+  });
+
+  // 8. Close drawer on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('mobile-open')) {
+      closeMobileDrawer();
+    }
+  });
+
+  // 9. Reset mobile drawer on viewport resize above 991px
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 991 && sidebar.classList.contains('mobile-open')) {
+      closeMobileDrawer();
     }
   });
 }

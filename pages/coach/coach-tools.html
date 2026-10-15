@@ -112,7 +112,9 @@
       <div class="dashboard-content-body">
 
         <!-- SECTION 1: OPERATIONS HERO BANNER -->
-        <section class="sports-card" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: #ffffff; padding: 2rem; margin-bottom: 2rem; border-color: #475569;">
+        <section class="sports-card" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: #ffffff; padding: 2rem; margin-bottom: 2rem; border-color: #475569;; position: relative;; overflow: hidden;">
+          <div class="hero-bg-overlay" style="background-image: url('../../assets/images/facility-tennis-arena.webp'); opacity: 0.22;" aria-hidden="true"></div>
+          <div style="position: relative; z-index: 1;">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
             <div>
               <span class="section-tag" style="background: rgba(255,255,255,0.15); color: #60a5fa;">Command & Control</span>
@@ -123,6 +125,8 @@
               <a href="../../404.html" class="btn btn-primary btn-sm">Generate Tournament Draw</a>
               <a href="../../404.html" class="btn btn-outline-light btn-sm">Export Financial Audit</a>
             </div>
+          </div>
+        
           </div>
         </section>
 
@@ -390,6 +394,13 @@
   <script src="../../assets/js/main.js"></script>
   <script src="../../assets/js/auth.js"></script>
   <script src="../../assets/js/dashboard.js"></script>
+  <!-- BACK TO TOP BUTTON -->
+  <button type="button" id="backToTopBtn" class="back-to-top-btn" aria-label="Back to top of page" title="Back to top">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
 </body>
 </html>
 

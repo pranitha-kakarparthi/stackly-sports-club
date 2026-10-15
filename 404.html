@@ -19,61 +19,40 @@
     </div>
   </div>
 
-  <!-- STICKY HEADER & NAVBAR -->
-  <header class="site-header">
-    <div class="navbar-container">
-      <a href="index.html" class="brand-link" aria-label="Stackly Sports Club Homepage">
-        <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="brand-logo-img">
-      </a>
-      <nav aria-label="Main Navigation">
-        <ul class="nav-menu">
-          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="pages/public/about.html" class="nav-link">About Us</a></li>
-          <li class="nav-item has-dropdown">
-            <a href="pages/sports/sports-programs.html" class="nav-link dropdown-trigger" aria-haspopup="true">
-              Sports & Programs
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="pages/sports/sports-programs.html" class="dropdown-link">All Academies Overview<span class="subtext">Explore all 12 disciplines</span></a></li>
-              <li><a href="pages/sports/indoor-sports.html" class="dropdown-link">Indoor Sports Arena<span class="subtext">Badminton, Squash, Basketball & TT</span></a></li>
-              <li><a href="pages/sports/outdoor-athletics.html" class="dropdown-link">Outdoor Athletics<span class="subtext">FIFA Turf, 400m Track & Tennis</span></a></li>
-              <li><a href="pages/sports/fitness-training.html" class="dropdown-link">Fitness & Conditioning<span class="subtext">High-Tech Gym, CrossFit & Hydro</span></a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a href="pages/public/membership.html" class="nav-link">Membership</a></li>
-          <li class="nav-item"><a href="pages/public/contact.html" class="nav-link">Contact</a></li>
-          <li class="mobile-drawer-actions">
-            <a href="pages/auth/sign-in.html" class="btn btn-secondary btn-block">Sign In</a>
-            <a href="pages/auth/sign-up.html" class="btn btn-primary btn-block">Register Membership</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="nav-actions">
-        <a href="pages/auth/sign-in.html" class="btn btn-secondary btn-sm desktop-only-action">Sign In</a>
-        <a href="pages/auth/sign-up.html" class="btn btn-primary btn-sm desktop-only-action">Join Club</a>
-        <button class="mobile-nav-toggle" aria-label="Toggle Navigation Menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
   <!-- 404 ATHLETIC ERROR SECTION -->
   <main class="error-page-wrapper">
-    <div class="hero-bg-overlay" style="background-image: url("assets/images/facility-indoor-arena.webp");" aria-hidden="true"></div>
+    <div class="hero-bg-overlay" style="background-image: url(\'assets/images/facility-indoor-arena.webp\');" aria-hidden="true"></div>
+    <div class="stadium-spotlight-beam beam-left" aria-hidden="true"></div>
+    <div class="stadium-spotlight-beam beam-right" aria-hidden="true"></div>
+
     <div class="error-content-card" data-aos="zoom-in">
       
+      <!-- Brand Logo on 404 Screen -->
+      <div class="error-brand-container">
+        <a href="index.html" class="brand-link" aria-label="Return to Stackly Sports Club Homepage">
+          <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" class="brand-logo-img">
+        </a>
+      </div>
+
       <!-- Animated Referee Alert Badge -->
       <div class="error-badge">
         <span class="error-beacon-pulse"></span>
-        <span>Official Ruling: Dead Ball &bull; Out of Bounds</span>
+        <span>Official Whistle &bull; Out of Bounds</span>
       </div>
 
-      <!-- Animated 404 Graphic with Radar Rings -->
+      <!-- Dynamic Athletic Bouncing Ball & Stadium Scoreboard Graphic -->
       <div class="error-graphic-container">
-        <div class="error-radar-ring"></div>
-        <div class="error-radar-ring delay-1"></div>
+        <div class="court-impact-ripple"></div>
+        <div class="court-baseline-glow"></div>
+        <div class="athletic-ball-wrapper">
+          <div class="athletic-ball" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+              <path d="M2 12h20"></path>
+            </svg>
+          </div>
+        </div>
         <div class="error-code-graphic">404</div>
       </div>
 
@@ -154,6 +133,13 @@
       </div>
     </div>
   </footer>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button type="button" id="backToTopBtn" class="back-to-top-btn" aria-label="Back to top of page" title="Back to top">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
 
   <script src="assets/js/main.js"></script>
 </body>
