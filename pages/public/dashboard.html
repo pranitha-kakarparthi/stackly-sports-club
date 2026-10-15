@@ -4,26 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecting to Dashboard | Stackly Sports Club</title>
-  <link rel="icon" type="image/webp" href="assets/images/logoStackly.webp">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/webp" href="../../assets/images/logoStackly.webp">
+  <link rel="stylesheet" href="../../assets/css/style.css">
   <script>
     (function routeDashboard() {
       try {
         var userRaw = localStorage.getItem('currentUser');
         var role = localStorage.getItem('role');
         if (!userRaw) {
-          window.location.replace('sign-in.html');
+          window.location.replace('../auth/sign-in.html');
           return;
         }
         var user = JSON.parse(userRaw);
         var targetRole = role || (user && user.role) || 'member';
         if (targetRole === 'coach') {
-          window.location.replace('coach-dashboard.html');
+          window.location.replace('../coach/coach-dashboard.html');
         } else {
-          window.location.replace('member-dashboard.html');
+          window.location.replace('../member/member-dashboard.html');
         }
       } catch (err) {
-        window.location.replace('sign-in.html');
+        window.location.replace('../auth/sign-in.html');
       }
     })();
   </script>
@@ -31,12 +31,12 @@
 <body style="background-color: #0f172a; color: #ffffff; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: var(--font-primary);">
 
   <div style="text-align: center; padding: 2rem;">
-    <img src="assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" style="height: 60px; margin-bottom: 1.5rem;">
+    <img src="../../assets/images/logoStackly.webp" alt="Stackly Sports Club Logo" style="height: 60px; margin-bottom: 1.5rem;">
     <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #ffffff;">Accessing Your Athletic Dashboard...</h2>
     <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 1.5rem;">Connecting you to your dedicated role portal.</p>
     <div style="display: flex; gap: 1rem; justify-content: center;">
-      <a href="member-dashboard.html" class="btn btn-primary btn-sm">Member Portal</a>
-      <a href="coach-dashboard.html" class="btn btn-outline btn-sm">Coach Console</a>
+      <a href="../member/member-dashboard.html" class="btn btn-primary btn-sm">Member Portal</a>
+      <a href="../coach/coach-dashboard.html" class="btn btn-outline btn-sm">Coach Console</a>
     </div>
   </div>
 

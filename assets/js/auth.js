@@ -162,7 +162,10 @@ function initSignIn(form) {
     localStorage.setItem('role', roleSelect.value);
 
     // Redirect to individual role dashboard
-    window.location.href = roleSelect.value === 'coach' ? 'coach-dashboard.html' : 'member-dashboard.html';
+    const inPages = window.location.pathname.replace(/\\/g, '/').includes('/pages/');
+    const coachTarget = inPages ? '../coach/coach-dashboard.html' : 'pages/coach/coach-dashboard.html';
+    const memberTarget = inPages ? '../member/member-dashboard.html' : 'pages/member/member-dashboard.html';
+    window.location.href = roleSelect.value === 'coach' ? coachTarget : memberTarget;
   });
 }
 
@@ -347,7 +350,8 @@ function initSignUp(form) {
 function logoutUser() {
   localStorage.removeItem('currentUser');
   localStorage.removeItem('role');
-  window.location.href = 'sign-in.html';
+  const inPages = window.location.pathname.replace(/\\/g, '/').includes('/pages/');
+  window.location.href = inPages ? '../auth/sign-in.html' : 'pages/auth/sign-in.html';
 }
 window.logoutUser = logoutUser;
 

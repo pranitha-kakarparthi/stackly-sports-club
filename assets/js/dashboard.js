@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Session verification
   const currentUserRaw = localStorage.getItem('currentUser');
   if (!currentUserRaw) {
-    window.location.href = 'sign-in.html';
+    const inPages = window.location.pathname.replace(/\\/g, '/').includes('/pages/');
+    window.location.href = inPages ? '../auth/sign-in.html' : 'pages/auth/sign-in.html';
     return;
   }
 
