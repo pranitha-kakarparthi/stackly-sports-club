@@ -45,12 +45,27 @@ function initSidebarCollapse() {
     }
   }
 
+  let savedDashScrollY = 0;
+  const toggleMobileSidebar = () => {
+    const isExpanded = sidebar.classList.toggle('mobile-expanded');
+    if (isExpanded) {
+      savedDashScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      document.body.style.top = `-${savedDashScrollY}px`;
+      document.body.classList.add('nav-open');
+    } else {
+      document.body.classList.remove('nav-open');
+      const prevTop = parseInt(document.body.style.top || '0', 10);
+      document.body.style.top = '';
+      window.scrollTo(0, -prevTop || savedDashScrollY);
+    }
+  };
+
   if (collapseBtn) {
     collapseBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       const isMobile = window.innerWidth <= 900;
       if (isMobile) {
-        sidebar.classList.toggle('mobile-expanded');
+        toggleMobileSidebar();
       } else {
         const willCollapse = !sidebar.classList.contains('collapsed');
         sidebar.classList.toggle('collapsed', willCollapse);
@@ -64,9 +79,17 @@ function initSidebarCollapse() {
   if (mobileToggle) {
     mobileToggle.addEventListener('click', (e) => {
       e.stopPropagation();
-      sidebar.classList.toggle('mobile-expanded');
+      toggleMobileSidebar();
     });
   }
+
+  // Close mobile sidebar when clicking a link or outside
+  sidebar.addEventListener('click', (e) => {
+    const link = e.target.closest('a, button:not(#sidebarCollapseBtn)');
+    if (link && window.innerWidth <= 900 && sidebar.classList.contains('mobile-expanded')) {
+      toggleMobileSidebar();
+    }
+  });
 }
 
 function getGreeting() {

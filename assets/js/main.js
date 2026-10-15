@@ -82,9 +82,19 @@ function initMobileNav() {
 
   if (!toggleBtn || !navMenu) return;
 
+  let savedScrollY = 0;
   const toggleMenu = () => {
     const isOpen = navMenu.classList.toggle('open');
-    document.body.classList.toggle('nav-open', isOpen);
+    if (isOpen) {
+      savedScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      document.body.style.top = `-${savedScrollY}px`;
+      document.body.classList.add('nav-open');
+    } else {
+      document.body.classList.remove('nav-open');
+      const prevTop = parseInt(document.body.style.top || '0', 10);
+      document.body.style.top = '';
+      window.scrollTo(0, -prevTop || savedScrollY);
+    }
     toggleBtn.setAttribute('aria-expanded', isOpen);
 
     // Update hamburger SVG icon
@@ -136,6 +146,7 @@ function initMobileNav() {
     if (window.innerWidth > 1024 && navMenu.classList.contains('open')) {
       navMenu.classList.remove('open');
       document.body.classList.remove('nav-open');
+      document.body.style.top = '';
       toggleBtn.innerHTML = `
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="3" y1="12" x2="21" y2="12"></line>
