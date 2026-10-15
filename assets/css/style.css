@@ -799,20 +799,20 @@ img {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 80% 25%, rgba(37, 99, 235, 0.32) 0%, transparent 55%),
-              radial-gradient(circle at 15% 75%, rgba(245, 158, 11, 0.2) 0%, transparent 45%);
+  background: radial-gradient(circle at 80% 25%, rgba(37, 99, 235, 0.28) 0%, transparent 58%),
+              radial-gradient(circle at 15% 75%, rgba(245, 158, 11, 0.18) 0%, transparent 48%);
   pointer-events: none;
   animation: ambientMeshFlow 14s ease-in-out infinite alternate;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-section::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(7, 11, 18, 0.88) 0%, rgba(7, 11, 18, 0.6) 45%, rgba(7, 11, 18, 0.25) 100%);
+  background: linear-gradient(90deg, rgba(7, 11, 18, 0.78) 0%, rgba(7, 11, 18, 0.48) 50%, rgba(7, 11, 18, 0.18) 100%);
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
 }
 
 @keyframes ambientMeshFlow {
@@ -827,7 +827,7 @@ img {
   align-items: center;
   gap: 3.5rem;
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
 }
 
@@ -1056,8 +1056,8 @@ img {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 35%, rgba(37, 99, 235, 0.28) 0%, transparent 65%);
-  z-index: 1;
+  background: radial-gradient(circle at 50% 35%, rgba(37, 99, 235, 0.22) 0%, transparent 65%);
+  z-index: 2;
   pointer-events: none;
   animation: ambientPageGlow 10s ease-in-out infinite alternate;
 }
@@ -1066,8 +1066,8 @@ img {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(7, 11, 18, 0.45) 0%, rgba(7, 11, 18, 0.8) 100%);
-  z-index: 1;
+  background: linear-gradient(180deg, rgba(7, 11, 18, 0.52) 0%, rgba(7, 11, 18, 0.72) 100%);
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -1077,7 +1077,7 @@ img {
 }
 
 /* ==========================================================================
-   HERO BACKGROUND IMAGES WITH PRECISE ALIGNMENT & CINEMA DRIFT
+   HERO BACKGROUND IMAGES WITH ENHANCED CONTRAST & DYNAMIC KEN BURNS ANIMATION
    ========================================================================== */
 .hero-bg-overlay {
   position: absolute;
@@ -1087,66 +1087,92 @@ img {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  opacity: 0.28;
-  filter: saturate(1.25) brightness(0.95);
+  opacity: 0.46;
+  filter: saturate(1.3) brightness(0.96) contrast(1.08);
   transform-origin: center center;
-  animation: heroCinemaDrift 20s ease-in-out infinite alternate;
+  animation: heroCinemaKenBurns 18s ease-in-out infinite alternate;
   pointer-events: none;
-  z-index: 0;
-  transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
+  z-index: 1;
+  transition: opacity 0.8s var(--ease-smooth), filter 0.8s var(--ease-smooth);
+  will-change: transform, opacity;
 }
 
 /* Precise Background Alignment in Primary Hero Section */
 .hero-section .hero-bg-overlay {
-  background-position: 72% center; /* Aligns athlete action towards visual focal area */
-  opacity: 0.32;
+  background-position: 70% center;
+  opacity: 0.50;
 }
 
 /* Precise Background Alignment in Inner Page Hero Sections */
 .page-hero .hero-bg-overlay {
-  background-position: center 36%; /* Vertically centers sports courts & training tracks */
-  opacity: 0.30;
+  background-position: center 36%;
+  opacity: 0.46;
 }
 
 /* Precise Background Alignment in Auth Sidebars */
 .auth-brand-side .hero-bg-overlay {
   background-position: center center;
-  opacity: 0.32;
+  opacity: 0.45;
+}
+
+/* Precise Background Alignment in 404 Error Screen */
+.error-page-wrapper .hero-bg-overlay {
+  background-position: center center;
+  opacity: 0.42;
 }
 
 /* Precise Background Alignment in Dashboard Hero Banners */
 .dashboard-hero-card .hero-bg-overlay,
 .sports-card .hero-bg-overlay {
   background-position: center center;
-  opacity: 0.25;
+  opacity: 0.35;
 }
 
+/* Hover Accentuation across all Hero Sections */
 .hero-section:hover .hero-bg-overlay,
 .page-hero:hover .hero-bg-overlay,
 .auth-brand-side:hover .hero-bg-overlay,
 .sports-card:hover .hero-bg-overlay {
-  opacity: 0.42;
+  opacity: 0.62;
+  filter: saturate(1.45) brightness(1.02) contrast(1.15);
 }
 
-@keyframes heroCinemaDrift {
+@keyframes heroCinemaKenBurns {
   0% {
     transform: scale(1) translate(0, 0);
   }
-  35% {
-    transform: scale(1.06) translate(-12px, -6px);
+  33% {
+    transform: scale(1.08) translate(-14px, -8px);
   }
-  70% {
-    transform: scale(1.08) translate(10px, -10px);
+  66% {
+    transform: scale(1.12) translate(10px, -12px);
   }
   100% {
-    transform: scale(1.03) translate(-8px, 6px);
+    transform: scale(1.05) translate(-8px, 6px);
   }
 }
 
 .hero-section > .container,
 .page-hero > .container {
   position: relative;
-  z-index: 2;
+  z-index: 3;
+}
+
+.hero-content,
+.page-hero .container,
+.auth-brand-content {
+  animation: heroContentReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes heroContentReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .breadcrumbs {
@@ -3062,7 +3088,7 @@ body.sticky-404-page .site-footer {
   background: radial-gradient(circle at 50% 35%, rgba(37, 99, 235, 0.35) 0%, transparent 65%),
               radial-gradient(circle at 20% 80%, rgba(245, 158, 11, 0.2) 0%, transparent 50%);
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
   animation: ambientMeshFlow 12s ease-in-out infinite alternate;
 }
 
@@ -3075,7 +3101,7 @@ body.sticky-404-page .site-footer {
   top: -15%;
   pointer-events: none;
   filter: blur(28px);
-  z-index: 1;
+  z-index: 2;
 }
 
 .stadium-spotlight-beam.beam-left {
@@ -3104,7 +3130,7 @@ body.sticky-404-page .site-footer {
 
 .error-content-card {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   max-width: 620px;
   width: 100%;
   background: var(--glass-dark-bg);
