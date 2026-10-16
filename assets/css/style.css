@@ -2391,218 +2391,270 @@ svg {
 }
 
 /* ==========================================================================
-   COLLAPSED SIDEBAR BEHAVIOR & FLOATING TOOLTIPS (Desktop Only)
+   COLLAPSED SIDEBAR BEHAVIOR & FLOATING TOOLTIPS
    ========================================================================== */
+.dashboard-sidebar.collapsed {
+  width: 82px !important;
+  min-width: 82px !important;
+  max-width: 82px !important;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: visible !important;
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  z-index: 3000 !important; /* Stacks completely above dashboard-main and topbar */
+  position: relative;
+}
+
 @media (min-width: 992px) {
   .dashboard-sidebar.collapsed {
-    width: 82px;
-    min-width: 82px;
-    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: sticky;
+    top: 0;
   }
+}
 
-  .dashboard-sidebar.collapsed .sidebar-header {
-    justify-content: center;
-    padding: 1.25rem 0.5rem;
-    position: relative;
-  }
+.dashboard-sidebar.collapsed .sidebar-header,
+.dashboard-sidebar.collapsed .sidebar-menu,
+.dashboard-sidebar.collapsed .sidebar-footer {
+  overflow: visible !important;
+}
 
-  .dashboard-sidebar.collapsed .sidebar-header .brand-link {
-    display: none;
-  }
+.dashboard-sidebar.collapsed .sidebar-header {
+  justify-content: center;
+  padding: 1.25rem 0.5rem;
+  position: relative;
+}
 
-  .dashboard-sidebar.collapsed .sidebar-collapse-btn {
-    margin: 0 auto;
-    position: relative;
-  }
+.dashboard-sidebar.collapsed .sidebar-header .brand-link {
+  display: none !important;
+}
 
-  .dashboard-sidebar.collapsed .sidebar-collapse-btn svg {
-    transform: rotate(180deg);
-  }
+.dashboard-sidebar.collapsed .sidebar-collapse-btn {
+  margin: 0 auto;
+  position: relative;
+}
 
-  .dashboard-sidebar.collapsed .sidebar-role-badge {
-    margin: 1rem auto 0.5rem;
-    padding: 0.35rem;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    font-size: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-color: rgba(96, 165, 250, 0.4);
-    position: relative;
-    cursor: default;
-  }
+.dashboard-sidebar.collapsed .sidebar-collapse-btn svg {
+  transform: rotate(180deg);
+}
 
-  .dashboard-sidebar.collapsed .sidebar-role-badge::after {
-    content: '★';
-    font-size: 0.95rem;
-    color: #38bdf8;
-  }
+/* 100% Centered Circular Role Badge in Collapsed State */
+.dashboard-sidebar.collapsed .sidebar-role-badge {
+  margin: 1rem auto 0.5rem !important;
+  padding: 0 !important;
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  max-width: 38px !important;
+  border-radius: 50% !important;
+  font-size: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1.5px solid rgba(96, 165, 250, 0.5) !important;
+  background: rgba(37, 99, 235, 0.25) !important;
+  position: relative !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  gap: 0 !important;
+  overflow: visible !important;
+}
 
-  .dashboard-sidebar.collapsed .sidebar-menu {
-    padding: 0.5rem 0.4rem;
-    align-items: center;
-  }
+.dashboard-sidebar.collapsed .sidebar-role-badge::after {
+  content: none !important;
+  display: none !important;
+}
 
-  .dashboard-sidebar.collapsed .sidebar-menu li {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
+.dashboard-sidebar.collapsed .sidebar-role-badge .role-badge-text {
+  display: none !important;
+}
 
-  .dashboard-sidebar.collapsed .sidebar-link {
-    width: 48px;
-    height: 48px;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    border-radius: var(--radius-md);
-    position: relative;
-    margin: 0 auto;
-    gap: 0;
-  }
+.dashboard-sidebar.collapsed .sidebar-role-badge .role-badge-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #38bdf8 !important;
+  line-height: 1 !important;
+  flex-shrink: 0 !important;
+}
 
-  .dashboard-sidebar.collapsed .sidebar-link svg {
-    width: 22px;
-    height: 22px;
-    margin: 0;
-    flex-shrink: 0;
-  }
+.dashboard-sidebar.collapsed .sidebar-role-badge .role-badge-icon svg {
+  display: block !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin: auto !important;
+  stroke: none !important;
+  fill: #38bdf8 !important;
+}
 
-  .dashboard-sidebar.collapsed .sidebar-link .sidebar-label,
-  .dashboard-sidebar.collapsed .sidebar-link > span:not(.sidebar-tooltip) {
-    display: none !important;
-  }
+.dashboard-sidebar.collapsed .sidebar-menu {
+  padding: 0.5rem 0.4rem;
+  align-items: center;
+}
 
-  .dashboard-sidebar.collapsed .sidebar-footer {
-    padding: 1rem 0.5rem;
-    display: flex;
-    justify-content: center;
-  }
+.dashboard-sidebar.collapsed .sidebar-menu li {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
 
-  .dashboard-sidebar.collapsed .sidebar-footer .btn {
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    font-size: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--radius-md);
-    position: relative;
-    margin: 0 auto;
-    gap: 0;
-  }
+.dashboard-sidebar.collapsed .sidebar-link {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-md);
+  position: relative;
+  margin: 0 auto;
+  gap: 0;
+}
 
-  .dashboard-sidebar.collapsed .sidebar-footer .btn svg {
-    margin: 0;
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-  }
+.dashboard-sidebar.collapsed .sidebar-link svg {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  flex-shrink: 0;
+}
 
-  .dashboard-sidebar.collapsed .sidebar-footer .btn .sidebar-label,
-  .dashboard-sidebar.collapsed .sidebar-footer .btn > span:not(.sidebar-tooltip) {
-    display: none !important;
-  }
+.dashboard-sidebar.collapsed .sidebar-link .sidebar-label,
+.dashboard-sidebar.collapsed .sidebar-link > span:not(.sidebar-tooltip) {
+  display: none !important;
+}
 
-  /* ==========================================================================
-     ATHLETIC LUXURY FLOATING TOOLTIPS (Collapsed State)
-     ========================================================================== */
-  .dashboard-sidebar.collapsed .sidebar-tooltip {
-    display: inline-flex !important;
-    align-items: center;
-    gap: 0.65rem;
-    position: absolute;
-    left: calc(100% + 14px);
-    top: 50%;
-    transform: translateY(-50%) translateX(-8px) scale(0.96);
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(9, 13, 22, 0.98) 100%);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    color: #ffffff;
-    padding: 0.45rem 0.85rem 0.45rem 0.6rem;
-    border-radius: var(--radius-md);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(37, 99, 235, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 2200;
-    white-space: nowrap;
-  }
+.dashboard-sidebar.collapsed .sidebar-footer {
+  padding: 1rem 0.5rem;
+  display: flex;
+  justify-content: center;
+}
 
-  /* Left Pointer Arrow (Callout Beak) */
-  .dashboard-sidebar.collapsed .sidebar-tooltip::before {
-    content: '';
-    position: absolute;
-    right: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    border: 6px solid transparent;
-    border-right-color: rgba(15, 23, 42, 0.98);
-  }
+.dashboard-sidebar.collapsed .sidebar-footer .btn {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  position: relative;
+  margin: 0 auto;
+  gap: 0;
+}
 
-  /* Tooltip Mini Icon Representation Badge */
-  .dashboard-sidebar.collapsed .sidebar-tooltip .tooltip-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    min-width: 24px;
-    border-radius: 6px;
-    background: rgba(37, 99, 235, 0.2);
-    border: 1px solid rgba(96, 165, 250, 0.35);
-    color: #60a5fa;
-    flex-shrink: 0;
-  }
+.dashboard-sidebar.collapsed .sidebar-footer .btn svg {
+  margin: 0;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
 
-  .dashboard-sidebar.collapsed .sidebar-tooltip .tooltip-icon svg {
-    width: 14px;
-    height: 14px;
-    stroke: currentColor;
-    display: block;
-    margin: 0;
-  }
+.dashboard-sidebar.collapsed .sidebar-footer .btn .sidebar-label,
+.dashboard-sidebar.collapsed .sidebar-footer .btn > span:not(.sidebar-tooltip) {
+  display: none !important;
+}
 
-  /* Tooltip Label Text */
-  .dashboard-sidebar.collapsed .sidebar-tooltip .tooltip-text {
-    font-size: 0.825rem;
-    font-weight: 700;
-    color: #f8fafc;
-    letter-spacing: 0.02em;
-    line-height: 1.2;
-    white-space: nowrap;
-  }
+/* ==========================================================================
+   ATHLETIC LUXURY FLOATING TOOLTIPS (High-Z-Index Floating Layer)
+   ========================================================================== */
+.dashboard-sidebar.collapsed .sidebar-tooltip {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.65rem;
+  position: absolute;
+  left: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-8px) scale(0.96);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(9, 13, 22, 0.98) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #ffffff;
+  padding: 0.45rem 0.85rem 0.45rem 0.6rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(37, 99, 235, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 99999 !important; /* Always renders on top of main content and topbar */
+  white-space: nowrap;
+}
 
-  /* Tooltip Active Item State */
-  .dashboard-sidebar.collapsed .sidebar-link.active .sidebar-tooltip {
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 0 1.5px var(--color-primary);
-  }
+/* Left Pointer Arrow (Callout Beak) */
+.dashboard-sidebar.collapsed .sidebar-tooltip::before {
+  content: '';
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-right-color: rgba(15, 23, 42, 0.98);
+}
 
-  .dashboard-sidebar.collapsed .sidebar-link.active .sidebar-tooltip .tooltip-icon {
-    background: var(--gradient-primary);
-    color: #ffffff;
-    border-color: rgba(255, 255, 255, 0.3);
-  }
+/* Tooltip Mini Icon Representation Badge */
+.dashboard-sidebar.collapsed .sidebar-tooltip .tooltip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 6px;
+  background: rgba(37, 99, 235, 0.25);
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  color: #60a5fa;
+  flex-shrink: 0;
+}
 
-  /* Tooltip Hover / Focus Reveal */
-  .dashboard-sidebar.collapsed .sidebar-link:hover .sidebar-tooltip,
-  .dashboard-sidebar.collapsed .sidebar-link:focus-visible .sidebar-tooltip,
-  .dashboard-sidebar.collapsed .sidebar-footer .btn:hover .sidebar-tooltip,
-  .dashboard-sidebar.collapsed .sidebar-footer .btn:focus-visible .sidebar-tooltip,
-  .dashboard-sidebar.collapsed .sidebar-collapse-btn:hover .sidebar-tooltip,
-  .dashboard-sidebar.collapsed .sidebar-collapse-btn:focus-visible .sidebar-tooltip,
-  .dashboard-sidebar.collapsed .sidebar-role-badge:hover .sidebar-tooltip {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(-50%) translateX(0) scale(1);
-  }
+.dashboard-sidebar.collapsed .sidebar-tooltip .tooltip-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  display: block;
+  margin: 0;
+}
+
+/* Tooltip Label Text */
+.dashboard-sidebar.collapsed .sidebar-tooltip .tooltip-text {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: #f8fafc;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Tooltip Active Item State */
+.dashboard-sidebar.collapsed .sidebar-link.active .sidebar-tooltip {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 0 1.5px var(--color-primary);
+}
+
+.dashboard-sidebar.collapsed .sidebar-link.active .sidebar-tooltip .tooltip-icon {
+  background: var(--gradient-primary);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Tooltip Hover / Focus Reveal - Always Above Main Content */
+.dashboard-sidebar.collapsed .sidebar-link:hover .sidebar-tooltip,
+.dashboard-sidebar.collapsed .sidebar-link:focus-visible .sidebar-tooltip,
+.dashboard-sidebar.collapsed .sidebar-footer .btn:hover .sidebar-tooltip,
+.dashboard-sidebar.collapsed .sidebar-footer .btn:focus-visible .sidebar-tooltip,
+.dashboard-sidebar.collapsed .sidebar-collapse-btn:hover .sidebar-tooltip,
+.dashboard-sidebar.collapsed .sidebar-collapse-btn:focus-visible .sidebar-tooltip,
+.dashboard-sidebar.collapsed .sidebar-role-badge:hover .sidebar-tooltip,
+.dashboard-sidebar.collapsed .sidebar-role-badge:focus-visible .sidebar-tooltip {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(-50%) translateX(0) scale(1) !important;
+  z-index: 99999 !important;
 }
 
 /* Mobile Toggle in Dashboard Topbar */
@@ -2632,17 +2684,48 @@ svg {
 .sidebar-role-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.725rem;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  font-size: 0.75rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.35rem 0.85rem;
+  letter-spacing: 0.08em;
+  padding: 0.4rem 0.85rem;
   border-radius: var(--radius-full);
   background: rgba(37, 99, 235, 0.2);
   color: #60a5fa;
-  border: 1px solid rgba(96, 165, 250, 0.3);
+  border: 1px solid rgba(96, 165, 250, 0.35);
   margin: 1.25rem 1.5rem 0.5rem;
+  position: relative;
+  box-sizing: border-box;
+  max-width: calc(100% - 3rem);
+  transition: all var(--ease-fast);
+}
+
+.sidebar-role-badge .role-badge-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  color: #38bdf8;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.sidebar-role-badge .role-badge-icon svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.sidebar-role-badge .role-badge-text {
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .sidebar-menu {
@@ -3035,10 +3118,38 @@ svg {
   .dashboard-sidebar .sidebar-role-badge {
     margin: 1.25rem 0.5rem 0.75rem;
     display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
     width: fit-content;
     font-size: 0.8rem;
-    padding: 0.4rem 1rem;
+    padding: 0.45rem 1rem;
     border-radius: var(--radius-full);
+  }
+
+  .dashboard-sidebar .sidebar-role-badge .role-badge-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    min-width: 15px;
+    color: #38bdf8;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .dashboard-sidebar .sidebar-role-badge .role-badge-icon svg {
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    fill: currentColor;
+  }
+
+  .dashboard-sidebar .sidebar-role-badge .role-badge-text {
+    line-height: 1.2;
+    display: inline-block;
   }
 
   .dashboard-sidebar .sidebar-menu {
@@ -3096,8 +3207,10 @@ svg {
     font-weight: 600 !important;
   }
 
-  .dashboard-sidebar .sidebar-tooltip {
-    display: none !important; /* Hide tooltips on mobile since labels are full-width and clear */
+  .dashboard-sidebar:not(.collapsed) .sidebar-tooltip,
+  .dashboard-sidebar.mobile-open .sidebar-tooltip,
+  .dashboard-sidebar.mobile-expanded .sidebar-tooltip {
+    display: none !important; /* Hide tooltips on expanded mobile drawer since labels are full-width and clear */
   }
 
   .dashboard-sidebar .sidebar-footer {

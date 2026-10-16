@@ -256,17 +256,19 @@ function initSidebarTooltips() {
   const roleBadge = document.getElementById('dashRoleBadge');
   if (roleBadge) {
     let tooltip = roleBadge.querySelector('.sidebar-tooltip');
+    const textEl = roleBadge.querySelector('.role-badge-text');
+    const labelText = (textEl ? textEl.textContent : roleBadge.textContent).trim();
     if (!tooltip) {
       tooltip = document.createElement('span');
       tooltip.className = 'sidebar-tooltip';
       tooltip.setAttribute('aria-hidden', 'true');
       tooltip.innerHTML = `
         <span class="tooltip-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
           </svg>
         </span>
-        <span class="tooltip-text">${roleBadge.textContent.trim()}</span>
+        <span class="tooltip-text">${labelText}</span>
       `;
       roleBadge.appendChild(tooltip);
     }
@@ -309,7 +311,26 @@ function initTopbar(user, role) {
     greetingEl.textContent = `${greeting}, ${firstName}!`;
   }
   if (roleBadgeEl) {
-    roleBadgeEl.textContent = isCoach ? 'Head Coach / Athletics Director' : 'Club Athlete / Member';
+    const roleText = isCoach ? 'Head Coach / Athletics Director' : 'Club Athlete / Member';
+    const textEl = roleBadgeEl.querySelector('.role-badge-text');
+    if (textEl) {
+      textEl.textContent = roleText;
+    } else {
+      const starSvg = `
+        <span class="role-badge-icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </span>
+      `;
+      const tooltipEl = roleBadgeEl.querySelector('.sidebar-tooltip');
+      roleBadgeEl.innerHTML = `${starSvg}<span class="role-badge-text">${roleText}</span>${tooltipEl ? tooltipEl.outerHTML : ''}`;
+    }
+
+    const tooltipTextEl = roleBadgeEl.querySelector('.sidebar-tooltip .tooltip-text');
+    if (tooltipTextEl) {
+      tooltipTextEl.textContent = roleText;
+    }
   }
   if (userNameEl) {
     userNameEl.textContent = fullName;
