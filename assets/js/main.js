@@ -310,11 +310,13 @@ function initBackToTop() {
   }
 
   const dashMain = document.querySelector('.dashboard-main');
+  const dashContent = document.querySelector('.dashboard-content-body');
 
   const checkScroll = () => {
     const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
     const dashScroll = dashMain ? dashMain.scrollTop : 0;
-    if (scrollY > 280 || dashScroll > 280) {
+    const contentScroll = dashContent ? dashContent.scrollTop : 0;
+    if (scrollY > 280 || dashScroll > 280 || contentScroll > 280) {
       btn.classList.add('visible');
     } else {
       btn.classList.remove('visible');
@@ -325,11 +327,17 @@ function initBackToTop() {
   if (dashMain) {
     dashMain.addEventListener('scroll', checkScroll, { passive: true });
   }
+  if (dashContent) {
+    dashContent.addEventListener('scroll', checkScroll, { passive: true });
+  }
 
   btn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (dashMain) {
       dashMain.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    if (dashContent) {
+      dashContent.scrollTo({ top: 0, behavior: 'smooth' });
     }
   });
 

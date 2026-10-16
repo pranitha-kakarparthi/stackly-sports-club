@@ -2587,6 +2587,7 @@ svg {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  min-height: 0;
   overflow: hidden;
   position: relative;
 }
@@ -2678,6 +2679,7 @@ svg {
 
 .dashboard-content-body {
   flex-grow: 1;
+  min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 2.25rem;
@@ -2821,12 +2823,25 @@ svg {
 .status-badge.maintenance { background: #fee2e2; color: #b91c1c; }
 
 @media (max-width: 991px) {
+  /* Prevent root document scroll lock & bounce on dashboard pages */
+  html:has(.dashboard-layout),
+  body:has(.dashboard-layout) {
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
   .dashboard-layout {
-    height: auto;
-    min-height: 100vh;
-    display: block;
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
+    display: flex;
+    flex-direction: column;
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100vw;
   }
 
   /* Fixed Off-Canvas Sidebar Drawer */
@@ -2845,11 +2860,14 @@ svg {
     transform: translateX(-105%);
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
     overflow-y: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
     display: flex;
     flex-direction: column;
     box-shadow: none;
     padding: 1.25rem 1rem;
+    touch-action: pan-y !important;
   }
 
   /* Open / Expanded Drawer State */
@@ -2897,6 +2915,8 @@ svg {
     gap: 0.4rem;
     padding: 0.75rem 0;
     flex-grow: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .dashboard-sidebar .sidebar-link {
@@ -2946,27 +2966,39 @@ svg {
     pointer-events: auto;
   }
 
-  /* Sticky Background Body Lock */
+  /* Sticky Background Lock when Drawer is Open */
   body.dash-sidebar-open {
     overflow: hidden !important;
-    position: fixed !important;
     width: 100% !important;
     height: 100% !important;
   }
 
-  /* Dashboard Main Flow */
+  body.dash-sidebar-open .dashboard-content-body {
+    overflow-y: hidden !important;
+    pointer-events: none !important;
+    touch-action: none !important;
+  }
+
+  /* Dashboard Main Flow & Viewport Container */
   .dashboard-main {
-    height: auto;
-    max-height: none;
-    overflow: visible;
+    flex: 1 1 0%;
+    height: 100%;
+    max-height: 100%;
+    min-height: 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
     width: 100%;
   }
 
-  /* Refined Topbar for Small Screens */
+  /* Fixed & Refined Topbar for Small Screens */
   .dashboard-topbar {
+    flex-shrink: 0;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1020;
     padding: 0.75rem 1.25rem;
     background: #ffffff;
     border-bottom: 1px solid var(--color-border);
@@ -2976,6 +3008,7 @@ svg {
     justify-content: space-between;
     flex-wrap: nowrap;
     gap: 0.75rem;
+    width: 100%;
   }
 
   .dashboard-mobile-toggle {
@@ -3032,9 +3065,19 @@ svg {
     gap: 0.75rem;
   }
 
+  /* Smooth Vertical Scrolling for Main Dashboard Content */
   .dashboard-content-body {
-    padding: 1.25rem;
-    overflow-y: visible;
+    flex: 1 1 0%;
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    scroll-behavior: smooth;
+    padding: 1.25rem 1.25rem 3.5rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 
@@ -3058,7 +3101,7 @@ svg {
   }
 
   .dashboard-content-body {
-    padding: 1rem 0.75rem;
+    padding: 1rem 0.75rem 3.5rem;
   }
 
   #member-overview div[style*="justify-content: space-between"],
@@ -4218,7 +4261,7 @@ body.sticky-404-page .site-footer {
     display: none;
   }
   .dashboard-content-body {
-    padding: 1rem 0.75rem;
+    padding: 1rem 0.75rem 3.5rem;
   }
   .metrics-row {
     grid-template-columns: 1fr;

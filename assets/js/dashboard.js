@@ -59,20 +59,23 @@ function initSidebarCollapse() {
   let savedDashScrollY = 0;
 
   const openMobileDrawer = () => {
-    savedDashScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    const dashBody = document.querySelector('.dashboard-content-body');
+    savedDashScrollY = dashBody ? dashBody.scrollTop : (window.pageYOffset || document.documentElement.scrollTop || 0);
     sidebar.classList.add('mobile-open', 'mobile-expanded');
-    document.body.style.top = `-${savedDashScrollY}px`;
-    document.body.classList.add('dash-sidebar-open', 'nav-open');
+    document.body.classList.add('dash-sidebar-open');
     if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
     if (collapseBtn) collapseBtn.setAttribute('title', 'Close navigation menu');
   };
 
   const closeMobileDrawer = () => {
     sidebar.classList.remove('mobile-open', 'mobile-expanded');
-    document.body.classList.remove('dash-sidebar-open', 'nav-open');
-    const prevTop = parseInt(document.body.style.top || '0', 10);
-    document.body.style.top = '';
-    window.scrollTo(0, -prevTop || savedDashScrollY);
+    document.body.classList.remove('dash-sidebar-open');
+    const dashBody = document.querySelector('.dashboard-content-body');
+    if (dashBody && savedDashScrollY) {
+      dashBody.scrollTop = savedDashScrollY;
+    } else if (savedDashScrollY) {
+      window.scrollTo(0, savedDashScrollY);
+    }
     if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
     if (collapseBtn) {
       const isDeskCollapsed = sidebar.classList.contains('collapsed');
