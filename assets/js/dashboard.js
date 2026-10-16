@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 4. Sidebar Collapse Toggle
   initSidebarCollapse();
+
+  // 5. Sidebar Tooltips for Collapsed Action Items
+  initSidebarTooltips();
 });
 
 function initSidebarCollapse() {
@@ -52,10 +55,11 @@ function initSidebarCollapse() {
     if (collapseBtn) {
       collapseBtn.setAttribute('aria-expanded', 'false');
       collapseBtn.setAttribute('title', 'Expand sidebar');
+      updateCollapseTooltip(true);
     }
   }
 
-  // 3. Mobile Drawer Controls (<= 991px)
+  // 3. Mobile Drawer Controls (<= 991px) - Fullscreen width expanded menu
   let savedDashScrollY = 0;
 
   const openMobileDrawer = () => {
@@ -64,7 +68,16 @@ function initSidebarCollapse() {
     sidebar.classList.add('mobile-open', 'mobile-expanded');
     document.body.classList.add('dash-sidebar-open');
     if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
-    if (collapseBtn) collapseBtn.setAttribute('title', 'Close navigation menu');
+    if (collapseBtn) {
+      collapseBtn.setAttribute('title', 'Close navigation menu');
+      collapseBtn.setAttribute('aria-label', 'Close navigation menu');
+      collapseBtn.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      `;
+    }
   };
 
   const closeMobileDrawer = () => {
@@ -80,6 +93,13 @@ function initSidebarCollapse() {
     if (collapseBtn) {
       const isDeskCollapsed = sidebar.classList.contains('collapsed');
       collapseBtn.setAttribute('title', isDeskCollapsed ? 'Expand sidebar' : 'Collapse sidebar');
+      collapseBtn.setAttribute('aria-label', isDeskCollapsed ? 'Expand sidebar' : 'Collapse sidebar');
+      collapseBtn.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      `;
+      updateCollapseTooltip(isDeskCollapsed);
     }
   };
 
@@ -107,6 +127,7 @@ function initSidebarCollapse() {
         collapseBtn.setAttribute('aria-expanded', (!willCollapse).toString());
         collapseBtn.setAttribute('title', willCollapse ? 'Expand sidebar' : 'Collapse sidebar');
         localStorage.setItem('stackly_sidebar_collapsed', willCollapse ? 'true' : 'false');
+        updateCollapseTooltip(willCollapse);
       }
     });
   }
@@ -133,10 +154,123 @@ function initSidebarCollapse() {
 
   // 9. Reset mobile drawer on viewport resize above 991px
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 991 && sidebar.classList.contains('mobile-open')) {
-      closeMobileDrawer();
+    if (window.innerWidth > 991) {
+      if (sidebar.classList.contains('mobile-open')) {
+        closeMobileDrawer();
+      }
+      const isDeskCollapsed = sidebar.classList.contains('collapsed');
+      if (collapseBtn) {
+        collapseBtn.innerHTML = `
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        `;
+        collapseBtn.setAttribute('title', isDeskCollapsed ? 'Expand sidebar' : 'Collapse sidebar');
+        updateCollapseTooltip(isDeskCollapsed);
+      }
     }
   });
+}
+
+function updateCollapseTooltip(isCollapsed) {
+  const collapseBtn = document.getElementById('sidebarCollapseBtn');
+  if (!collapseBtn) return;
+  const tooltipText = collapseBtn.querySelector('.tooltip-text');
+  const tooltipIcon = collapseBtn.querySelector('.tooltip-icon');
+  if (tooltipText) {
+    tooltipText.textContent = isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar';
+  }
+  if (tooltipIcon) {
+    tooltipIcon.innerHTML = isCollapsed
+      ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>`
+      : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>`;
+  }
+}
+
+function initSidebarTooltips() {
+  const sidebar = document.querySelector('.dashboard-sidebar');
+  if (!sidebar) return;
+
+  // 1. Navigation items
+  const links = sidebar.querySelectorAll('.sidebar-link');
+  links.forEach(link => {
+    let tooltip = link.querySelector('.sidebar-tooltip');
+    const svg = link.querySelector('svg:not(.tooltip-icon svg)');
+    const labelSpan = link.querySelector('.sidebar-label') || link.querySelector('span:not(.sidebar-tooltip):not(.tooltip-text):not(.tooltip-icon)');
+    const labelText = (labelSpan ? labelSpan.textContent.trim() : link.getAttribute('data-tooltip') || '').trim();
+
+    if (!tooltip && svg && labelText) {
+      tooltip = document.createElement('span');
+      tooltip.className = 'sidebar-tooltip';
+      tooltip.setAttribute('aria-hidden', 'true');
+      tooltip.innerHTML = `
+        <span class="tooltip-icon">${svg.outerHTML}</span>
+        <span class="tooltip-text">${labelText}</span>
+      `;
+      link.appendChild(tooltip);
+    }
+  });
+
+  // 2. Footer Sign Out action button
+  const footerBtn = sidebar.querySelector('.sidebar-footer .btn');
+  if (footerBtn) {
+    let tooltip = footerBtn.querySelector('.sidebar-tooltip');
+    const svg = footerBtn.querySelector('svg:not(.tooltip-icon svg)');
+    const labelSpan = footerBtn.querySelector('.sidebar-label') || footerBtn.querySelector('span:not(.sidebar-tooltip):not(.tooltip-text):not(.tooltip-icon)');
+    const labelText = labelSpan ? labelSpan.textContent.trim() : 'Sign Out Session';
+
+    if (!tooltip && svg) {
+      tooltip = document.createElement('span');
+      tooltip.className = 'sidebar-tooltip';
+      tooltip.setAttribute('aria-hidden', 'true');
+      tooltip.innerHTML = `
+        <span class="tooltip-icon">${svg.outerHTML}</span>
+        <span class="tooltip-text">${labelText}</span>
+      `;
+      footerBtn.appendChild(tooltip);
+    }
+  }
+
+  // 3. Header Collapse / Expand button
+  const collapseBtn = document.getElementById('sidebarCollapseBtn');
+  if (collapseBtn) {
+    let tooltip = collapseBtn.querySelector('.sidebar-tooltip');
+    if (!tooltip) {
+      tooltip = document.createElement('span');
+      tooltip.className = 'sidebar-tooltip';
+      tooltip.setAttribute('aria-hidden', 'true');
+      const isCollapsed = sidebar.classList.contains('collapsed');
+      tooltip.innerHTML = `
+        <span class="tooltip-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="${isCollapsed ? '9 18 15 12 9 6' : '15 18 9 12 15 6'}"></polyline>
+          </svg>
+        </span>
+        <span class="tooltip-text">${isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}</span>
+      `;
+      collapseBtn.appendChild(tooltip);
+    }
+  }
+
+  // 4. Role Badge
+  const roleBadge = document.getElementById('dashRoleBadge');
+  if (roleBadge) {
+    let tooltip = roleBadge.querySelector('.sidebar-tooltip');
+    if (!tooltip) {
+      tooltip = document.createElement('span');
+      tooltip.className = 'sidebar-tooltip';
+      tooltip.setAttribute('aria-hidden', 'true');
+      tooltip.innerHTML = `
+        <span class="tooltip-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </span>
+        <span class="tooltip-text">${roleBadge.textContent.trim()}</span>
+      `;
+      roleBadge.appendChild(tooltip);
+    }
+  }
 }
 
 function getGreeting() {
