@@ -45,7 +45,12 @@ function initSidebarCollapse() {
     backdrop = document.createElement('div');
     backdrop.className = 'dashboard-backdrop';
     backdrop.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(backdrop);
+    const layout = document.querySelector('.dashboard-layout');
+    if (layout) {
+      layout.insertBefore(backdrop, layout.firstChild);
+    } else {
+      document.body.appendChild(backdrop);
+    }
   }
 
   // 2. Desktop Collapse State Restoration (> 991px)

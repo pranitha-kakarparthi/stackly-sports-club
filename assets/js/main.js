@@ -237,6 +237,12 @@ function initScrollAnimations() {
   const animatedElements = document.querySelectorAll('[data-aos]');
   if (!animatedElements.length) return;
 
+  // Immediate reveal for users who prefer reduced motion
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    animatedElements.forEach((el) => el.classList.add('aos-animate'));
+    return;
+  }
+
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -246,8 +252,8 @@ function initScrollAnimations() {
         }
       });
     }, {
-      rootMargin: '0px 0px -50px 0px',
-      threshold: 0.1
+      rootMargin: '0px 0px -20px 0px',
+      threshold: 0.05
     });
 
     animatedElements.forEach((el) => observer.observe(el));
