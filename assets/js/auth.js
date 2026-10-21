@@ -208,6 +208,15 @@ function initSignUp(form) {
     });
   }
 
+  // Terms Checkbox: remove is-invalid when checked
+  if (termsCheckbox) {
+    termsCheckbox.addEventListener('change', () => {
+      if (termsCheckbox.checked) {
+        termsCheckbox.classList.remove('is-invalid');
+      }
+    });
+  }
+
   // Real-time password strength analyzer
   if (passwordInput && strengthBar) {
     passwordInput.addEventListener('input', () => {

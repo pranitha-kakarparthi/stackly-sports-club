@@ -85,49 +85,81 @@ function initMobileNav() {
 
   if (!toggleBtn || !navMenu) return;
 
-  let savedScrollY = 0;
-  const toggleMenu = () => {
-    const isOpen = navMenu.classList.toggle('open');
-    if (isOpen) {
-      savedScrollY = window.pageYOffset || document.documentElement.scrollTop;
-      document.body.style.top = `-${savedScrollY}px`;
-      document.body.classList.add('nav-open');
-    } else {
-      document.body.classList.remove('nav-open');
-      const prevTop = parseInt(document.body.style.top || '0', 10);
-      document.body.style.top = '';
-      window.scrollTo(0, -prevTop || savedScrollY);
-    }
-    toggleBtn.setAttribute('aria-expanded', isOpen);
+  // Ensure backdrop element exists for mobile navigation drawer
+  let backdrop = document.querySelector('.mobile-nav-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'mobile-nav-backdrop';
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(backdrop);
+  }
 
-    // Update hamburger SVG icon
-    if (isOpen) {
-      toggleBtn.innerHTML = `
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      `;
+  const openMenu = () => {
+    navMenu.classList.add('open');
+    document.body.classList.add('nav-open');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    toggleBtn.innerHTML = `
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    `;
+  };
+
+  const closeMenu = () => {
+    navMenu.classList.remove('open');
+    document.body.classList.remove('nav-open');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    toggleBtn.innerHTML = `
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    `;
+  };
+
+  const toggleMenu = () => {
+    if (navMenu.classList.contains('open')) {
+      closeMenu();
     } else {
-      toggleBtn.innerHTML = `
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      `;
+      openMenu();
     }
   };
 
-  toggleBtn.addEventListener('click', toggleMenu);
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
 
-  // Close nav when clicking outside or link (except dropdown toggles)
+  // Close nav when clicking or tapping on the backdrop
+  backdrop.addEventListener('click', closeMenu);
+  backdrop.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    closeMenu();
+  }, { passive: false });
+
+  // Close nav when clicking outside anywhere on document
+  document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('open')) {
+      if (!navMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+        closeMenu();
+      }
+    }
+  });
+
+  // Close nav when clicking any link inside navMenu (except dropdown toggles)
   navMenu.addEventListener('click', (e) => {
     const link = e.target.closest('a');
     if (link && !link.classList.contains('dropdown-trigger')) {
-      if (navMenu.classList.contains('open')) {
-        toggleMenu();
-      }
+      closeMenu();
+    }
+  });
+
+  // Close nav on Escape key press
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('open')) {
+      closeMenu();
     }
   });
 
@@ -147,16 +179,7 @@ function initMobileNav() {
   // Reset menu on resize above 1024px
   window.addEventListener('resize', () => {
     if (window.innerWidth > 1024 && navMenu.classList.contains('open')) {
-      navMenu.classList.remove('open');
-      document.body.classList.remove('nav-open');
-      document.body.style.top = '';
-      toggleBtn.innerHTML = `
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      `;
+      closeMenu();
     }
   });
 }

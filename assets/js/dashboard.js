@@ -60,11 +60,7 @@ function initSidebarCollapse() {
   }
 
   // 3. Mobile Drawer Controls (<= 991px) - Fullscreen width expanded menu
-  let savedDashScrollY = 0;
-
   const openMobileDrawer = () => {
-    const dashBody = document.querySelector('.dashboard-content-body');
-    savedDashScrollY = dashBody ? dashBody.scrollTop : (window.pageYOffset || document.documentElement.scrollTop || 0);
     sidebar.classList.add('mobile-open', 'mobile-expanded');
     document.body.classList.add('dash-sidebar-open');
     if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'true');
@@ -83,12 +79,6 @@ function initSidebarCollapse() {
   const closeMobileDrawer = () => {
     sidebar.classList.remove('mobile-open', 'mobile-expanded');
     document.body.classList.remove('dash-sidebar-open');
-    const dashBody = document.querySelector('.dashboard-content-body');
-    if (dashBody && savedDashScrollY) {
-      dashBody.scrollTop = savedDashScrollY;
-    } else if (savedDashScrollY) {
-      window.scrollTo(0, savedDashScrollY);
-    }
     if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
     if (collapseBtn) {
       const isDeskCollapsed = sidebar.classList.contains('collapsed');
@@ -132,9 +122,20 @@ function initSidebarCollapse() {
     });
   }
 
-  // 6. Backdrop click to close drawer
-  backdrop.addEventListener('click', () => {
+  // 6. Backdrop click & touch to close drawer
+  backdrop.addEventListener('click', closeMobileDrawer);
+  backdrop.addEventListener('touchstart', (e) => {
+    e.preventDefault();
     closeMobileDrawer();
+  }, { passive: false });
+
+  // Close drawer when clicking outside anywhere on document
+  document.addEventListener('click', (e) => {
+    if (sidebar.classList.contains('mobile-open')) {
+      if (!sidebar.contains(e.target) && (!mobileToggle || !mobileToggle.contains(e.target))) {
+        closeMobileDrawer();
+      }
+    }
   });
 
   // 7. Close mobile drawer when clicking any link inside the sidebar
